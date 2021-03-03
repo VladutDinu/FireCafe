@@ -1,0 +1,203 @@
+﻿<Window x:Class="FireCaffe.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FireCaffe"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="#ff9933">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition>
+            </ColumnDefinition>
+            <ColumnDefinition>
+            </ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Background="#0F0F2D" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="90"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="Images/logo.png" 
+                   Margin="6,0,7,0"/>
+            <TextBlock Text="FireCaffe"
+                       Foreground="FloralWhite"
+                       Grid.Column="1"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium">
+
+            </TextBlock>
+            <TextBlock Text="Menu"
+                       Name="Menu"
+                       Foreground="FloralWhite"
+                       Grid.Column="2"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Visibility="Hidden"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium">
+
+            </TextBlock>
+            <TextBlock Text="Offers"
+                       Name="Offers"
+                       Foreground="FloralWhite"
+                       Grid.Column="3"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Visibility="Hidden"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium">
+
+            </TextBlock>
+            <TextBlock Text="CoffeBeans"
+                       Name="CoffeBeans"
+                       Foreground="FloralWhite"
+                       Grid.Column="4"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Visibility="Hidden"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium">
+
+            </TextBlock>
+            <TextBlock Text="Locations"
+                       Name="Locations"
+                       Foreground="FloralWhite"
+                       Grid.Column="8"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Visibility="Hidden"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium">
+
+            </TextBlock>
+            <TextBlock Text="Contact"
+                       Name="Contact"
+                       Foreground="FloralWhite"
+                       Grid.Column="9"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Visibility="Hidden"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium">
+
+            </TextBlock>
+            <Button Name="Minimize" Grid.Column="10" Background="#0F0F2D" Height="25" Width="25" BorderThickness="0" HorizontalAlignment="Left" >
+                <StackPanel >
+                    <Image Source="Images/minimize.PNG"
+                            HorizontalAlignment="Center">
+
+                    </Image>
+                    
+                </StackPanel>
+                
+            </Button>
+
+            <Button Name="Maximize" Grid.Column="10" Background="#0F0F2D" Height="25" Width="25" BorderThickness="0" HorizontalAlignment="Center">
+                <StackPanel>
+                    <Image Source="Images/maximize.PNG"
+
+                   HorizontalAlignment="Left"/>
+                </StackPanel>
+            </Button>
+
+            <Button Name="Exit" Click="Exit_Click_1" Grid.Column="10" Background="#0F0F2D" Height="25" Width="25" BorderThickness="0" HorizontalAlignment="Right">
+                <StackPanel>
+                    <Image Source="Images/close.PNG"
+                   HorizontalAlignment="Left"/>
+                </StackPanel>
+            </Button>
+
+
+           
+
+            
+
+        </Grid>
+        <StackPanel Grid.Row="1" Margin="20">
+            <Label Content="Login" 
+                   Name="Login"
+                       Foreground="FloralWhite" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"
+                       Margin="0,0,0,75">
+            </Label>
+            <Label Content="Username"
+                   Name="Username"
+                       Foreground="FloralWhite" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
+            <TextBox Name="txtUsername" 
+                     Background="BlanchedAlmond" 
+                     Foreground="#330000"
+                     Width="250"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"/>
+            <Label Content="Password"
+                   Name="Password"
+                       Foreground="FloralWhite" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
+            <TextBox Name="txtPassword" 
+                     Background="BlanchedAlmond" 
+                     Foreground="#330000"
+                     Width="250"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"/>
+            <Button Name="btnSubmit" 
+                    Background="#ff9933"
+                    Content="Submit" 
+                    Foreground="FloralWhite"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="25"
+                    FontFamily="Fonts/#ShipporiMinchoB1-Medium" 
+                    Margin="0,10,0,0"
+                    BorderBrush="Transparent"
+                    BorderThickness="0" Click="btnSubmit_Click"/>
+
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="20" Grid.Column="2">
+            <Label Name="PeopleToday" Content="People today : " Foreground="FloralWhite"
+                       Grid.Column="11"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"
+                       FontSize="25"
+                       Margin="0,0,0,10">
+
+            </Label>
+            <Label Name="OrdersToday" Content="Orders today : " Foreground="FloralWhite"
+                       Grid.Column="11"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"
+                       FontSize="25">
+
+            </Label>
+            <Image Source="Images/logo.png" Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,50,0,0"></Image>
+        </StackPanel>
+
+    </Grid>
+</Window>
