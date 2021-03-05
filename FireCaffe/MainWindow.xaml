@@ -47,6 +47,7 @@
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium">
 
             </TextBlock>
+
             <TextBlock Text="Menu"
                        Name="Menu"
                        Foreground="FloralWhite"
@@ -57,6 +58,17 @@
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium">
 
             </TextBlock>
+            <Button Content="Login"
+                       Name="LoginButton"
+                       Click="Login_Click"
+                       Foreground="FloralWhite"
+                       Grid.Column="2"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"
+                       Background="#0F0F2D">
+
+            </Button>
             <TextBlock Text="Offers"
                        Name="Offers"
                        Foreground="FloralWhite"
@@ -67,6 +79,17 @@
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium">
 
             </TextBlock>
+            <Button Content="SignUp"
+                       Name="SignUpButton"
+                       Click="SignUp_Click"
+                       Foreground="FloralWhite"
+                       Grid.Column="3"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"
+                       Background="#0F0F2D">
+
+            </Button>
             <TextBlock Text="CoffeBeans"
                        Name="CoffeBeans"
                        Foreground="FloralWhite"
@@ -129,7 +152,7 @@
             
 
         </Grid>
-        <StackPanel Grid.Row="1" Margin="20">
+        <StackPanel Grid.Row="1" Margin="20" Name="LoginPanel" Visibility="Hidden">
             <Label Content="Login" 
                    Name="Login"
                        Foreground="FloralWhite" 
@@ -137,35 +160,35 @@
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
-                       Margin="0,0,0,75">
+                       Margin="0,0,0,55">
             </Label>
             <Label Content="Username"
-                   Name="Username"
+                   Name="UsernameLogin"
                        Foreground="FloralWhite" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
-            <TextBox Name="txtUsername" 
+            <TextBox Name="txtUsernameLogin" 
                      Background="BlanchedAlmond" 
                      Foreground="#330000"
                      Width="250"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"/>
             <Label Content="Password"
-                   Name="Password"
+                   Name="PasswordLogin"
                        Foreground="FloralWhite" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
-            <TextBox Name="txtPassword" 
+            <TextBox Name="txtPasswordLogin" 
                      Background="BlanchedAlmond" 
                      Foreground="#330000"
                      Width="250"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"/>
-            <Button Name="btnSubmit" 
+            <Button Name="btnSubmitLogin" 
                     Background="#ff9933"
                     Content="Submit" 
                     Foreground="FloralWhite"
@@ -178,6 +201,70 @@
                     BorderThickness="0" Click="btnSubmit_Click"/>
 
         </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="20" Name="SignUpPanel" Visibility="Hidden">
+            <Label Content="Sign Up" 
+                       Name="SignUp"
+                       Foreground="FloralWhite" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"
+                       Margin="0,0,0,55">
+            </Label>
+            <Label Content="First Name"
+                   Name="UsernameSignUp"
+                       Foreground="FloralWhite" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
+            <TextBox Name="txtFirstName" 
+                     Background="BlanchedAlmond" 
+                     Foreground="#330000"
+                     Width="250"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"/>
+            <Label Content="Last Name"
+                   Name="PasswordSignUp"
+                       Foreground="FloralWhite" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
+            <TextBox Name="txtLastNameSignUp" 
+                     Background="BlanchedAlmond" 
+                     Foreground="#330000"
+                     Width="250"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"/>
+            <Label Content="Password"
+                   Name="PasswordLabel"
+                       Foreground="FloralWhite" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
+            <TextBox Name="txtPasswordSignUp" 
+                     Background="BlanchedAlmond" 
+                     Foreground="#330000"
+                     Width="250"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"/>
+            <Button Name="btnSubmitSignUp" 
+                    Background="#ff9933"
+                    Content="Submit" 
+                    Foreground="FloralWhite"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="25"
+                    FontFamily="Fonts/#ShipporiMinchoB1-Medium" 
+                    Margin="0,10,0,0"
+                    BorderBrush="Transparent"
+                    BorderThickness="0" Click="btnSubmit_Click"/>
+
+        </StackPanel>
+
         <StackPanel Grid.Row="1" Margin="20" Grid.Column="2">
             <Label Name="PeopleToday" Content="People today : " Foreground="FloralWhite"
                        Grid.Column="11"
