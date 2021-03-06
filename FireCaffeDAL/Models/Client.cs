@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FireCaffeDAL.Models
 {
-    [Table("Clients")]
+    [Table("Client")]
     public class Client
     {
         [Key]
@@ -33,7 +33,7 @@ namespace FireCaffeDAL.Models
 
         //[ForeignKey("Sale")]
         //public int SaleId { get; set; }
-        
+
         //public Sale Sale { get; set; }
 
     }

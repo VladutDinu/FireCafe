@@ -127,7 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FireCaffeDAL\FireCaffeDAL.csproj">
-      <Project>{e1ee4753-76d8-4bf4-a532-6b98ab6de6c7}</Project>
+      <Project>{86afe9c5-768d-4b37-b4fa-829281c00fa6}</Project>
       <Name>FireCaffeDAL</Name>
     </ProjectReference>
   </ItemGroup>

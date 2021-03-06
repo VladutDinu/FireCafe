@@ -15,12 +15,10 @@ E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\obj\Debug\FireCaffe.exe
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\obj\Debug\FireCaffe.pdb
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\EntityFramework.dll
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\EntityFramework.SqlServer.dll
-E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\FireCaffeDAL.dll
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Microsoft.Xaml.Behaviors.dll
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Prism.dll
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Prism.Wpf.dll
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\FireCaffeDAL.pdb
-E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\FireCaffeDAL.dll.config
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\EntityFramework.xml
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\EntityFramework.SqlServer.xml
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Microsoft.Xaml.Behaviors.pdb
@@ -30,3 +28,5 @@ E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Prism.xml
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Prism.Wpf.pdb
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Prism.Wpf.xml
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\obj\Debug\FireCaffe.csproj.CopyComplete
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\FireCaffeDAL.exe
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\FireCaffeDAL.exe.config

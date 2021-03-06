@@ -2,6 +2,7 @@
 using FireCaffeDAL.Models;
 using FireCaffeDAL.Services;
 using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,14 +38,17 @@ namespace FireCaffe
         }
         private void show_hide_standard()
         {
-            LoginButton.Visibility = Visibility.Hidden;
-            SignUpButton.Visibility = Visibility.Hidden;
+            btnLogin.Visibility = Visibility.Hidden;
+            btnSignUp.Visibility = Visibility.Hidden;
 
-            Menu.Visibility = Visibility.Visible;
-            Offers.Visibility = Visibility.Visible;
-            CoffeBeans.Visibility = Visibility.Visible;
-            Locations.Visibility = Visibility.Visible;
-            Contact.Visibility = Visibility.Visible;
+            btnMenu.Visibility = Visibility.Visible;
+            btnOffers.Visibility = Visibility.Visible;
+            SilverCups.Visibility = Visibility.Visible;
+            SilverCupsCount.Visibility = Visibility.Visible;
+            GoldeCupsCount.Visibility = Visibility.Visible;
+            GoldeCups.Visibility = Visibility.Visible;
+            btnLocations.Visibility = Visibility.Visible;
+            btnContact.Visibility = Visibility.Visible;
         }
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
@@ -74,6 +78,8 @@ namespace FireCaffe
                     mainWindowViewModel.Clients.Add(client);
                     SignUpPanel.Visibility = Visibility.Hidden;
                     MessageBox.Show("Account created.");
+                    SilverCupsCount.Text += client.SilverCups.ToString();
+                    GoldeCupsCount.Text += client.GoldenCups.ToString();
                     show_hide_standard();
                 }
                 
@@ -84,6 +90,8 @@ namespace FireCaffe
                 if (c.Count > 0)
                 {
                     LoginPanel.Visibility = Visibility.Hidden;
+                    SilverCupsCount.Text += c[0].SilverCups.ToString();
+                    GoldeCupsCount.Text += c[0].GoldenCups.ToString();
                     show_hide_standard();
                 }
                 else
@@ -117,6 +125,24 @@ namespace FireCaffe
             LoginPanel.Visibility = Visibility.Hidden;
             if (SignUpPanel.Visibility != Visibility.Visible)
                 SignUpPanel.Visibility = Visibility.Visible;
+        }
+
+        private void btnMenu_Click(object sender, RoutedEventArgs e)
+        {
+            (sender as Button).ContextMenu.IsEnabled = true;
+            (sender as Button).ContextMenu.PlacementTarget = (sender as Button);
+            (sender as Button).ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+            (sender as Button).ContextMenu.IsOpen = true;
+        }
+
+        private void Tea_Click(object sender, RoutedEventArgs e)
+        {
+            TeaPanel.Visibility = Visibility.Visible;
+        }
+
+        private void lvProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

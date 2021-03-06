@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FireCaffeDAL.Models
 {
-    [Table("Sale")]
+    [Table("Sales")]
     public class Sale
     {
         [Key]

@@ -9,6 +9,76 @@
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="#ff9933">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="RoundedButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="4"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="20" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true" Margin="0,0,0,0">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#1d1d8c"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#1d1d8c"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#1d1d8c"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#1d1d8c"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="{x:Type ContextMenu}" TargetType="{x:Type ContextMenu}">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ContextMenu}">
+                        <Border Background="#CD222120" CornerRadius="7, 7, 8, 8" BorderBrush="DarkGray" BorderThickness="2" Opacity="0.96">
+                            <StackPanel ClipToBounds="True" Orientation="Vertical" IsItemsHost="True" Margin="5,4,5,4"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -47,52 +117,67 @@
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium">
 
             </TextBlock>
-
-            <TextBlock Text="Menu"
-                       Name="Menu"
+            <Button    Name="btnMenu"
+                       Content="Menu"
                        Foreground="FloralWhite"
                        Grid.Column="2"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Visibility="Hidden"
-                       FontFamily="Fonts/#ShipporiMinchoB1-Medium">
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"
+                       Background="#0F0F2D"
+                       Click="btnMenu_Click"
+                       Style="{DynamicResource RoundedButtonStyle}">
 
-            </TextBlock>
+                <Button.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Name="Coffee" Foreground="FloralWhite" Header="Coffee" Background="#0F0F2D"/>
+                        <MenuItem Name="Desserts" Foreground="FloralWhite" Header="Desserts" Background="#0F0F2D"/>
+                        <MenuItem Name="HotDrinks" Foreground="FloralWhite" Header="Hot drinks" Background="#0F0F2D"/>
+                        <MenuItem Name="Tea" Foreground="FloralWhite" Header="Tea" Background="#0F0F2D" Click="Tea_Click"/>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
             <Button Content="Login"
-                       Name="LoginButton"
+                       Name="btnLogin"
                        Click="Login_Click"
                        Foreground="FloralWhite"
                        Grid.Column="2"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
-                       Background="#0F0F2D">
+                       Background="#0F0F2D"
+                       Style="{DynamicResource RoundedButtonStyle}">
 
             </Button>
-            <TextBlock Text="Offers"
-                       Name="Offers"
+            <Button Content="Offers"
+                       Name="btnOffers"
                        Foreground="FloralWhite"
                        Grid.Column="3"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Visibility="Hidden"
-                       FontFamily="Fonts/#ShipporiMinchoB1-Medium">
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"
+                       Background="#0F0F2D"
+                       Style="{DynamicResource RoundedButtonStyle}">
 
-            </TextBlock>
+            </Button>
             <Button Content="SignUp"
-                       Name="SignUpButton"
+                       Name="btnSignUp"
                        Click="SignUp_Click"
                        Foreground="FloralWhite"
                        Grid.Column="3"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
-                       Background="#0F0F2D">
+                       Background="#0F0F2D"
+                       Style="{DynamicResource RoundedButtonStyle}">
 
             </Button>
-            <TextBlock Text="CoffeBeans"
-                       Name="CoffeBeans"
+            <TextBlock Text="SilverCups"
+                       Name="SilverCups"
                        Foreground="FloralWhite"
+                       Background="#0F0F2D"
                        Grid.Column="4"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
@@ -100,35 +185,72 @@
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium">
 
             </TextBlock>
-            <TextBlock Text="Locations"
-                       Name="Locations"
+            <TextBlock Text=""
+                       Name="SilverCupsCount"
+                       Foreground="FloralWhite"
+                       Background="#0F0F2D"
+                       Grid.Column="5"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Visibility="Hidden"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium">
+
+            </TextBlock>
+            <TextBlock Text="GoldeCups"
+                       Name="GoldeCups"
+                       Foreground="FloralWhite"
+                       Background="#0F0F2D"
+                       Grid.Column="6"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Visibility="Hidden"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium">
+
+            </TextBlock>
+            <TextBlock Text=""
+                       Name="GoldeCupsCount"
+                       Foreground="FloralWhite"
+                       Background="#0F0F2D"
+                       Grid.Column="7"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Visibility="Hidden"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium">
+
+            </TextBlock>
+            <Button Content="Locations"
+                       Name="btnLocations"
                        Foreground="FloralWhite"
                        Grid.Column="8"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Visibility="Hidden"
-                       FontFamily="Fonts/#ShipporiMinchoB1-Medium">
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"
+                       Background="#0F0F2D"
+                       Style="{DynamicResource RoundedButtonStyle}">
 
-            </TextBlock>
-            <TextBlock Text="Contact"
-                       Name="Contact"
+            </Button>
+            <Button Content="Contact"
+                       Name="btnContact"
                        Foreground="FloralWhite"
                        Grid.Column="9"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Visibility="Hidden"
-                       FontFamily="Fonts/#ShipporiMinchoB1-Medium">
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"
+                       Background="#0F0F2D"
+                       Style="{DynamicResource RoundedButtonStyle}">
 
-            </TextBlock>
+            </Button>
             <Button Name="Minimize" Grid.Column="10" Background="#0F0F2D" Height="25" Width="25" BorderThickness="0" HorizontalAlignment="Left" >
                 <StackPanel >
                     <Image Source="Images/minimize.PNG"
                             HorizontalAlignment="Center">
 
                     </Image>
-                    
+
                 </StackPanel>
-                
+
             </Button>
 
             <Button Name="Maximize" Grid.Column="10" Background="#0F0F2D" Height="25" Width="25" BorderThickness="0" HorizontalAlignment="Center">
@@ -147,9 +269,9 @@
             </Button>
 
 
-           
 
-            
+
+
 
         </Grid>
         <StackPanel Grid.Row="1" Margin="20" Name="LoginPanel" Visibility="Hidden">
@@ -201,7 +323,25 @@
                     BorderThickness="0" Click="btnSubmit_Click"/>
 
         </StackPanel>
-
+        <StackPanel Grid.Row="1" Margin="20" Name="TeaPanel" Visibility="Hidden">
+            <ListView ItemsSource="{Binding Product}" 
+                      SelectedItem="{Binding Product}" 
+                      Name="lvProducts" 
+                      HorizontalAlignment="Left"
+                      Height="387" VerticalAlignment="Top"
+                      Width="360" SelectionChanged="lvProducts_SelectionChanged" 
+                      Visibility="Visible">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Id" Width="30" DisplayMemberBinding="{Binding Id}" />
+                        <GridViewColumn Header="Name" Width="75" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Description" Width="90" DisplayMemberBinding="{Binding Description}" />
+                        <GridViewColumn Header="Price (Lei)" Width="75"  DisplayMemberBinding="{Binding Price}"/>
+                        <GridViewColumn Header="Marime" Width="84"  DisplayMemberBinding="{Binding Size}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
         <StackPanel Grid.Row="1" Margin="20" Name="SignUpPanel" Visibility="Hidden">
             <Label Content="Sign Up" 
                        Name="SignUp"

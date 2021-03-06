@@ -10,7 +10,7 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            ContextKey = "MagazinDAL.MasterContext";
+            ContextKey = "FireCaffeDAL.MasterContext";
         }
 
         protected override void Seed(FireCaffeDAL.MasterContext context)
