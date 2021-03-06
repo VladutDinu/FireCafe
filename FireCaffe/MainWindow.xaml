@@ -131,7 +131,7 @@
 
                 <Button.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Name="Coffee" Foreground="FloralWhite" Header="Coffee" Background="#0F0F2D"/>
+                        <MenuItem Name="Coffee" Foreground="FloralWhite" Header="Coffee" Background="#0F0F2D" Click="Coffee_Click"/>
                         <MenuItem Name="Desserts" Foreground="FloralWhite" Header="Desserts" Background="#0F0F2D"/>
                         <MenuItem Name="HotDrinks" Foreground="FloralWhite" Header="Hot drinks" Background="#0F0F2D"/>
                         <MenuItem Name="Tea" Foreground="FloralWhite" Header="Tea" Background="#0F0F2D" Click="Tea_Click"/>
@@ -323,7 +323,7 @@
                     BorderThickness="0" Click="btnSubmit_Click"/>
 
         </StackPanel>
-        <StackPanel Grid.Row="1" Margin="20" Name="TeaPanel" Visibility="Hidden">
+        <StackPanel Grid.Row="1" Margin="20" Name="ProductsPanel" Visibility="Hidden">
             <ListView ItemsSource="{Binding Product}" 
                       SelectedItem="{Binding Product}" 
                       Name="lvProducts" 

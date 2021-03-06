@@ -137,12 +137,21 @@ namespace FireCaffe
 
         private void Tea_Click(object sender, RoutedEventArgs e)
         {
-            TeaPanel.Visibility = Visibility.Visible;
+            ProductServices productServices = new FireCaffeDAL.Services.ProductServices();
+            ProductsPanel.Visibility = Visibility.Visible;
+            lvProducts.ItemsSource = productServices.GetProductsByType("Tea");
         }
 
         private void lvProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void Coffee_Click(object sender, RoutedEventArgs e)
+        {
+            ProductServices productServices = new FireCaffeDAL.Services.ProductServices();
+            ProductsPanel.Visibility = Visibility.Visible;
+            lvProducts.ItemsSource = productServices.GetProductsByType("Coffe");
         }
     }
 }

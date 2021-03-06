@@ -80,11 +80,16 @@
     <Compile Include="Migrations\202103061119330_DB_INITIAL.designer.cs">
       <DependentUpon>202103061119330_DB_INITIAL.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103061614466_Added_Type_Products.cs" />
+    <Compile Include="Migrations\202103061614466_Added_Type_Products.designer.cs">
+      <DependentUpon>202103061614466_Added_Type_Products.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Sale.cs" />
     <Compile Include="Services\ClientServices.cs" />
+    <Compile Include="Services\ProductServices.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -114,6 +119,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\202103061119330_DB_INITIAL.resx">
       <DependentUpon>202103061119330_DB_INITIAL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103061614466_Added_Type_Products.resx">
+      <DependentUpon>202103061614466_Added_Type_Products.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
