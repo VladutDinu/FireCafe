@@ -185,6 +185,19 @@
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium">
 
             </TextBlock>
+            <Button Content="Add Products"
+                       Name="AddProducts"
+                       Foreground="FloralWhite"
+                       Background="#0F0F2D"
+                       Grid.Column="4"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Visibility="Hidden"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"
+                       Click="AddProducts_Click"
+                    Style="{DynamicResource RoundedButtonStyle}">
+
+            </Button>
             <TextBlock Text=""
                        Name="SilverCupsCount"
                        Foreground="FloralWhite"
@@ -321,6 +334,95 @@
                     Margin="0,10,0,0"
                     BorderBrush="Transparent"
                     BorderThickness="0" Click="btnSubmit_Click"/>
+
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="20" Name="AddProductsPanel" Visibility="Hidden">
+            <Label Content="Add new product" 
+                   Name="pProduct"
+                       Foreground="FloralWhite" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"
+                       Margin="0,0,0,10">
+            </Label>
+            <Label Content="Product name"
+                   Name="pName"
+                       Foreground="FloralWhite" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
+            <TextBox Name="txtProductName" 
+                     Background="BlanchedAlmond" 
+                     Foreground="#330000"
+                     Width="250"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"/>
+            <Label Content="Product price"
+                   Name="pPrice"
+                       Foreground="FloralWhite" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
+            <TextBox Name="txtProductPrice" 
+                     Background="BlanchedAlmond" 
+                     Foreground="#330000"
+                     Width="250"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"/>
+            <Label Content="Product description"
+                   Name="pDescripton"
+                       Foreground="FloralWhite" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
+            <TextBox Name="txtDescripton" 
+                     Background="BlanchedAlmond" 
+                     Foreground="#330000"
+                     Width="250"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"/>
+            <Label Content="Product size"
+                   Name="pSize"
+                       Foreground="FloralWhite" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
+            <TextBox Name="txtSize" 
+                     Background="BlanchedAlmond" 
+                     Foreground="#330000"
+                     Width="250"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"/>
+            <Label Content="Product type"
+                   Name="pType"
+                       Foreground="FloralWhite" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
+            <TextBox Name="txtType" 
+                     Background="BlanchedAlmond" 
+                     Foreground="#330000"
+                     Width="250"
+                     HorizontalAlignment="Center">
+
+            </TextBox>
+            <Button x:Name="btnAddProduct" 
+                    Background="#ff9933"
+                    Content="Submit" 
+                    Foreground="FloralWhite"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="25"
+                    FontFamily="Fonts/#ShipporiMinchoB1-Medium" 
+                    Margin="140,10,140,0"
+                    BorderBrush="Transparent"
+                    BorderThickness="0" Click="btnAddProduct_Click"/>
 
         </StackPanel>
         <StackPanel Grid.Row="1" Margin="20" Name="ProductsPanel" Visibility="Hidden">

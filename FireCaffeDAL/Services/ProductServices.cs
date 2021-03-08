@@ -28,5 +28,15 @@ namespace FireCaffeDAL.Services
             }
 
         }
+        public void AddProduct(Product product)
+        {
+
+            using (var context = new MasterContext())
+            {
+                context.Set<Product>().Add(product);
+                context.SaveChanges();
+            }
+
+        }
     }
 }

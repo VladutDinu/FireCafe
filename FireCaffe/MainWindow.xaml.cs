@@ -50,6 +50,17 @@ namespace FireCaffe
             btnLocations.Visibility = Visibility.Visible;
             btnContact.Visibility = Visibility.Visible;
         }
+        private void show_hide_admin()
+        {
+            btnLogin.Visibility = Visibility.Hidden;
+            btnSignUp.Visibility = Visibility.Hidden;
+
+            btnMenu.Visibility = Visibility.Visible;
+            btnOffers.Visibility = Visibility.Visible;
+            AddProducts.Visibility = Visibility.Visible;
+            btnLocations.Visibility = Visibility.Visible;
+            btnContact.Visibility = Visibility.Visible;
+        }
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
             ClientServices clientServices = new ClientServices();
@@ -89,10 +100,18 @@ namespace FireCaffe
                 List<Client> c = clientServices.GetClientByCred(txtUsernameLogin.Text, txtPasswordLogin.Text);
                 if (c.Count > 0)
                 {
-                    LoginPanel.Visibility = Visibility.Hidden;
-                    SilverCupsCount.Text += c[0].SilverCups.ToString();
-                    GoldeCupsCount.Text += c[0].GoldenCups.ToString();
-                    show_hide_standard();
+                    if (c[0].Admin!=1) {
+                        LoginPanel.Visibility = Visibility.Hidden;
+                        SilverCupsCount.Text += c[0].SilverCups.ToString();
+                        GoldeCupsCount.Text += c[0].GoldenCups.ToString();
+                        show_hide_standard();
+                    }
+                    else
+                    {
+                        LoginPanel.Visibility = Visibility.Hidden;
+                        show_hide_admin();
+                    }
+                    
                 }
                 else
                 {
@@ -152,6 +171,23 @@ namespace FireCaffe
             ProductServices productServices = new FireCaffeDAL.Services.ProductServices();
             ProductsPanel.Visibility = Visibility.Visible;
             lvProducts.ItemsSource = productServices.GetProductsByType("Coffe");
+        }
+
+        private void AddProducts_Click(object sender, RoutedEventArgs e)
+        {
+            AddProductsPanel.Visibility = Visibility.Visible;
+        }
+
+        private void btnAddProduct_Click(object sender, RoutedEventArgs e)
+        {
+            ProductServices productServices = new FireCaffeDAL.Services.ProductServices();
+            Product product = new Product();
+            product.Name = txtProductName.Text;
+            product.Price = Int32.Parse(txtProductPrice.Text);
+            product.Description = txtDescripton.Text;
+            product.Size = txtSize.Text;
+            product.Type = txtType.Text;
+            productServices.AddProduct(product);
         }
     }
 }
