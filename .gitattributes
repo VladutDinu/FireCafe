@@ -1,0 +1,2 @@
+*.exe filter=lfs diff=lfs merge=lfs -text
+*.g.resources filter=lfs diff=lfs merge=lfs -text

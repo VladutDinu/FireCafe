@@ -87,7 +87,7 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition>
+            <ColumnDefinition Width="550">
             </ColumnDefinition>
             <ColumnDefinition>
             </ColumnDefinition>
@@ -132,8 +132,8 @@
                 <Button.ContextMenu>
                     <ContextMenu>
                         <MenuItem Name="Coffee" Foreground="FloralWhite" Header="Coffee" Background="#0F0F2D" Click="Coffee_Click"/>
-                        <MenuItem Name="Desserts" Foreground="FloralWhite" Header="Desserts" Background="#0F0F2D"/>
-                        <MenuItem Name="HotDrinks" Foreground="FloralWhite" Header="Hot drinks" Background="#0F0F2D"/>
+                        <MenuItem Name="Desserts" Foreground="FloralWhite" Header="Desserts" Background="#0F0F2D" Click="Desserts_Click"/>
+                        <MenuItem Name="HotDrinks" Foreground="FloralWhite" Header="Hot drinks" Background="#0F0F2D" Click="HotDrinks_Click"/>
                         <MenuItem Name="Tea" Foreground="FloralWhite" Header="Tea" Background="#0F0F2D" Click="Tea_Click"/>
                     </ContextMenu>
                 </Button.ContextMenu>
@@ -209,8 +209,8 @@
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium">
 
             </TextBlock>
-            <TextBlock Text="GoldeCups"
-                       Name="GoldeCups"
+            <TextBlock Text="GoldenCups"
+                       Name="GoldenCups"
                        Foreground="FloralWhite"
                        Background="#0F0F2D"
                        Grid.Column="6"
@@ -221,7 +221,7 @@
 
             </TextBlock>
             <TextBlock Text=""
-                       Name="GoldeCupsCount"
+                       Name="GoldenCupsCount"
                        Foreground="FloralWhite"
                        Background="#0F0F2D"
                        Grid.Column="7"
@@ -425,24 +425,60 @@
                     BorderThickness="0" Click="btnAddProduct_Click"/>
 
         </StackPanel>
+
         <StackPanel Grid.Row="1" Margin="20" Name="ProductsPanel" Visibility="Hidden">
+            <Label     Content=""
+                       Name="productType"
+                       Foreground="FloralWhite" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       Margin="0,0,0,10"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Bold"/>
             <ListView ItemsSource="{Binding Product}" 
                       SelectedItem="{Binding Product}" 
                       Name="lvProducts" 
                       HorizontalAlignment="Left"
-                      Height="387" VerticalAlignment="Top"
-                      Width="360" SelectionChanged="lvProducts_SelectionChanged" 
-                      Visibility="Visible">
+                      Height="302" VerticalAlignment="Top"
+                      Width="492" SelectionChanged="lvProducts_SelectionChanged" 
+                      Visibility="Visible"
+                      ScrollViewer.VerticalScrollBarVisibility="Visible">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Id" Width="30" DisplayMemberBinding="{Binding Id}" />
-                        <GridViewColumn Header="Name" Width="75" DisplayMemberBinding="{Binding Name}" />
-                        <GridViewColumn Header="Description" Width="90" DisplayMemberBinding="{Binding Description}" />
+                        <GridViewColumn Header="Name" Width="155" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Description" Width="135" DisplayMemberBinding="{Binding Description}" />
                         <GridViewColumn Header="Price (Lei)" Width="75"  DisplayMemberBinding="{Binding Price}"/>
-                        <GridViewColumn Header="Marime" Width="84"  DisplayMemberBinding="{Binding Size}"/>
+                        <GridViewColumn Header="Size" Width="73"  DisplayMemberBinding="{Binding Size}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnBuyProduct" 
+                    Background="#ff9933"
+                    Content="Buy" 
+                    Foreground="FloralWhite"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="25"
+                    FontFamily="Fonts/#ShipporiMinchoB1-Medium" 
+                    BorderBrush="Transparent"
+                    Margin="50, 0, 0, 0"
+                    BorderThickness="0" Click="btnBuyProduct_Click"/>
+                <Button x:Name="btnBuyWithGoldenCups" 
+                    Background="#ff9933"
+                    Content="Buy with golden cups" 
+                    Foreground="FloralWhite"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="25"
+                    Margin="120, 0, 0, 0"
+                    FontFamily="Fonts/#ShipporiMinchoB1-Medium" 
+                    BorderBrush="Transparent"
+                    BorderThickness="0" Click="btnBuyWithGoldenCups_Click"/>
+            </StackPanel>
+            
+            
         </StackPanel>
         <StackPanel Grid.Row="1" Margin="20" Name="SignUpPanel" Visibility="Hidden">
             <Label Content="Sign Up" 
@@ -507,7 +543,7 @@
 
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Margin="20" Grid.Column="2">
+        <StackPanel Grid.Row="1" Margin="10,20,20,20" Grid.Column="1">
             <Label Name="PeopleToday" Content="People today : " Foreground="FloralWhite"
                        Grid.Column="11"
                        VerticalAlignment="Center"

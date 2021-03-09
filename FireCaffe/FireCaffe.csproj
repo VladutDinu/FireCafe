@@ -107,6 +107,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\ShipporiMinchoB1-Bold.ttf" />
+    <Resource Include="Fonts\ShipporiMinchoB1-ExtraBold.ttf" />
+    <Resource Include="Fonts\ShipporiMinchoB1-Medium.ttf" />
+    <Resource Include="Fonts\ShipporiMinchoB1-Regular.ttf" />
+    <Resource Include="Fonts\ShipporiMinchoB1-SemiBold.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -116,9 +121,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Fonts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\close.PNG" />
     <Resource Include="Images\logo.png" />

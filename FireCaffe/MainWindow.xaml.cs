@@ -26,17 +26,18 @@ namespace FireCaffe
     public partial class MainWindow : Window
     {
         MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
+        private Client loggedClient;
         public MainWindow()
         {
             InitializeComponent();
             var rand = new Random();
-            var people = rand.Next(0, 1000);
+            var people = rand.Next(0, 500);
             PeopleToday.Content += people.ToString();
             OrdersToday.Content += rand.Next(people, 2*people).ToString();
             LoginPanel.Visibility = Visibility.Hidden;
             SignUpPanel.Visibility = Visibility.Hidden;
         }
-        private void show_hide_standard()
+        private void show_hide_standard(Client c)
         {
             btnLogin.Visibility = Visibility.Hidden;
             btnSignUp.Visibility = Visibility.Hidden;
@@ -45,10 +46,13 @@ namespace FireCaffe
             btnOffers.Visibility = Visibility.Visible;
             SilverCups.Visibility = Visibility.Visible;
             SilverCupsCount.Visibility = Visibility.Visible;
-            GoldeCupsCount.Visibility = Visibility.Visible;
-            GoldeCups.Visibility = Visibility.Visible;
+            GoldenCupsCount.Visibility = Visibility.Visible;
+            GoldenCups.Visibility = Visibility.Visible;
             btnLocations.Visibility = Visibility.Visible;
             btnContact.Visibility = Visibility.Visible;
+
+            SilverCupsCount.Text += c.SilverCups.ToString();
+            GoldenCupsCount.Text += c.GoldenCups.ToString();
         }
         private void show_hide_admin()
         {
@@ -89,9 +93,8 @@ namespace FireCaffe
                     mainWindowViewModel.Clients.Add(client);
                     SignUpPanel.Visibility = Visibility.Hidden;
                     MessageBox.Show("Account created.");
-                    SilverCupsCount.Text += client.SilverCups.ToString();
-                    GoldeCupsCount.Text += client.GoldenCups.ToString();
-                    show_hide_standard();
+                    show_hide_standard(client);
+                    loggedClient = client;
                 }
                 
             }
@@ -102,16 +105,15 @@ namespace FireCaffe
                 {
                     if (c[0].Admin!=1) {
                         LoginPanel.Visibility = Visibility.Hidden;
-                        SilverCupsCount.Text += c[0].SilverCups.ToString();
-                        GoldeCupsCount.Text += c[0].GoldenCups.ToString();
-                        show_hide_standard();
+                        show_hide_standard(c[0]);
+                        loggedClient = c[0];
                     }
                     else
                     {
                         LoginPanel.Visibility = Visibility.Hidden;
                         show_hide_admin();
                     }
-                    
+                                       
                 }
                 else
                 {
@@ -159,6 +161,7 @@ namespace FireCaffe
             ProductServices productServices = new FireCaffeDAL.Services.ProductServices();
             ProductsPanel.Visibility = Visibility.Visible;
             lvProducts.ItemsSource = productServices.GetProductsByType("Tea");
+            productType.Content = "Tea";
         }
 
         private void lvProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -171,6 +174,7 @@ namespace FireCaffe
             ProductServices productServices = new FireCaffeDAL.Services.ProductServices();
             ProductsPanel.Visibility = Visibility.Visible;
             lvProducts.ItemsSource = productServices.GetProductsByType("Coffe");
+            productType.Content = "Coffee";
         }
 
         private void AddProducts_Click(object sender, RoutedEventArgs e)
@@ -188,6 +192,43 @@ namespace FireCaffe
             product.Size = txtSize.Text;
             product.Type = txtType.Text;
             productServices.AddProduct(product);
+        }
+
+        private void HotDrinks_Click(object sender, RoutedEventArgs e)
+        {
+            ProductServices productServices = new FireCaffeDAL.Services.ProductServices();
+            ProductsPanel.Visibility = Visibility.Visible;
+            lvProducts.ItemsSource = productServices.GetProductsByType("HotDrink");
+            productType.Content = "Hot drinks";
+        }
+
+        private void Desserts_Click(object sender, RoutedEventArgs e)
+        {
+            ProductServices productServices = new FireCaffeDAL.Services.ProductServices();
+            ProductsPanel.Visibility = Visibility.Visible;
+            lvProducts.ItemsSource = productServices.GetProductsByType("Dessert");
+            productType.Content = "Desserts";
+        }
+
+        private void btnBuyProduct_Click(object sender, RoutedEventArgs e)
+        {
+            ClientServices clientServices = new ClientServices();
+            Product p = (Product)lvProducts.SelectedItem;
+            loggedClient.SilverCups += Int32.Parse(p.Size);
+            loggedClient.GoldenCups += loggedClient.SilverCups/10;
+            loggedClient.SilverCups = loggedClient.SilverCups % 10;
+            clientServices.Update(loggedClient);
+            SilverCupsCount.Text = loggedClient.SilverCups.ToString();
+            GoldenCupsCount.Text = loggedClient.GoldenCups.ToString();
+        }
+
+        private void btnBuyWithGoldenCups_Click(object sender, RoutedEventArgs e)
+        {
+            ClientServices clientServices = new ClientServices();
+            Product p = (Product)lvProducts.SelectedItem;
+            loggedClient.GoldenCups -= p.Price;
+            clientServices.Update(loggedClient);
+            GoldenCupsCount.Text = loggedClient.GoldenCups.ToString();
         }
     }
 }
