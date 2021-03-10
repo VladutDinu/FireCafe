@@ -16,7 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Drawing.Imaging;
+using System.IO;
 
 namespace FireCaffe
 {
@@ -36,6 +37,27 @@ namespace FireCaffe
             OrdersToday.Content += rand.Next(people, 2*people).ToString();
             LoginPanel.Visibility = Visibility.Hidden;
             SignUpPanel.Visibility = Visibility.Hidden;
+        }
+        private static ImageSource ToImageSource(System.Drawing.Image image, ImageFormat imageFormat)
+        {
+            BitmapImage bitmap = new BitmapImage();
+
+            using (MemoryStream stream = new System.IO.MemoryStream())
+            {
+                // Save to the stream
+                image.Save(stream, imageFormat);
+
+                // Rewind the stream
+                stream.Seek(0, SeekOrigin.Begin);
+
+                // Tell the WPF BitmapImage to use this stream
+                bitmap.BeginInit();
+                bitmap.StreamSource = stream;
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.EndInit();
+            }
+
+            return bitmap;
         }
         private void show_hide_standard(Client c)
         {
@@ -107,6 +129,7 @@ namespace FireCaffe
                         LoginPanel.Visibility = Visibility.Hidden;
                         show_hide_standard(c[0]);
                         loggedClient = c[0];
+                        
                     }
                     else
                     {
@@ -229,6 +252,14 @@ namespace FireCaffe
             loggedClient.GoldenCups -= p.Price;
             clientServices.Update(loggedClient);
             GoldenCupsCount.Text = loggedClient.GoldenCups.ToString();
+        }
+
+        private void btnOffers_Click(object sender, RoutedEventArgs e)
+        {
+            OffersPanel.Visibility = Visibility.Visible;
+            BarcodeLib.Barcode barcode = new BarcodeLib.Barcode();
+            System.Drawing.Image img = barcode.Encode(BarcodeLib.TYPE.CODE128, loggedClient.Password, 450, 250);
+            BarCode.Source = ToImageSource(img, ImageFormat.Png);
         }
     }
 }

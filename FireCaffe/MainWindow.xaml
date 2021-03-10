@@ -159,7 +159,8 @@
                        Visibility="Hidden"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
                        Background="#0F0F2D"
-                       Style="{DynamicResource RoundedButtonStyle}">
+                       Style="{DynamicResource RoundedButtonStyle}"
+                       Click="btnOffers_Click">
 
             </Button>
             <Button Content="SignUp"
@@ -287,7 +288,8 @@
 
 
         </Grid>
-        
+
+
         <StackPanel Grid.Row="1" Margin="20" Name="LoginPanel" Visibility="Hidden">
             
             <Label Content="Login" 
@@ -339,6 +341,7 @@
                     BorderThickness="0" Click="btnSubmit_Click"/>
 
         </StackPanel>
+
         <StackPanel Grid.Row="1" Margin="20" Name="AddProductsPanel" Visibility="Hidden">
             <Label Content="Add new product" 
                    Name="pProduct"
@@ -429,6 +432,14 @@
 
         </StackPanel>
 
+        <StackPanel Grid.Row="1" Margin="20" Name="OffersPanel" Visibility="Visible">
+
+            <Image Width="450" Height="250" Name="BarCode">
+                
+            </Image>
+            
+        </StackPanel>
+        
         <StackPanel Grid.Row="1" Margin="20" Name="ProductsPanel" Visibility="Hidden">
             <Label     Content=""
                        Name="productType"
