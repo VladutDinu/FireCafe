@@ -434,7 +434,7 @@
 
         <StackPanel Grid.Row="1" Margin="20" Name="OffersPanel" Visibility="Visible">
 
-            <Image Width="450" Height="250" Name="BarCode">
+            <Image Width="450" Height="250" Name="BarCode" Margin="0,65,0,0">
                 
             </Image>
             
@@ -494,7 +494,6 @@
             
             
         </StackPanel>
-        
         
         <StackPanel Grid.Row="1" Margin="20" Name="SignUpPanel" Visibility="Hidden">
             <Label Content="Sign Up" 

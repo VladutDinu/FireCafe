@@ -28,6 +28,15 @@ namespace FireCaffe
     {
         MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
         private Client loggedClient;
+        enum Sta
+        {
+            LoginPanel,
+            SignUpPanel,
+            AddProductsPanel,
+            OffersPanel,
+            ProductsPanel
+        }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -181,6 +190,7 @@ namespace FireCaffe
 
         private void Tea_Click(object sender, RoutedEventArgs e)
         {
+            OffersPanel.Visibility = Visibility.Hidden;
             ProductServices productServices = new FireCaffeDAL.Services.ProductServices();
             ProductsPanel.Visibility = Visibility.Visible;
             lvProducts.ItemsSource = productServices.GetProductsByType("Tea");
@@ -194,6 +204,7 @@ namespace FireCaffe
 
         private void Coffee_Click(object sender, RoutedEventArgs e)
         {
+            OffersPanel.Visibility = Visibility.Hidden;
             ProductServices productServices = new FireCaffeDAL.Services.ProductServices();
             ProductsPanel.Visibility = Visibility.Visible;
             lvProducts.ItemsSource = productServices.GetProductsByType("Coffe");
@@ -202,11 +213,13 @@ namespace FireCaffe
 
         private void AddProducts_Click(object sender, RoutedEventArgs e)
         {
+            OffersPanel.Visibility = Visibility.Hidden;
             AddProductsPanel.Visibility = Visibility.Visible;
         }
 
         private void btnAddProduct_Click(object sender, RoutedEventArgs e)
         {
+
             ProductServices productServices = new FireCaffeDAL.Services.ProductServices();
             Product product = new Product();
             product.Name = txtProductName.Text;
@@ -219,6 +232,7 @@ namespace FireCaffe
 
         private void HotDrinks_Click(object sender, RoutedEventArgs e)
         {
+            OffersPanel.Visibility = Visibility.Hidden;
             ProductServices productServices = new FireCaffeDAL.Services.ProductServices();
             ProductsPanel.Visibility = Visibility.Visible;
             lvProducts.ItemsSource = productServices.GetProductsByType("HotDrink");
@@ -227,6 +241,7 @@ namespace FireCaffe
 
         private void Desserts_Click(object sender, RoutedEventArgs e)
         {
+            OffersPanel.Visibility = Visibility.Hidden;
             ProductServices productServices = new FireCaffeDAL.Services.ProductServices();
             ProductsPanel.Visibility = Visibility.Visible;
             lvProducts.ItemsSource = productServices.GetProductsByType("Dessert");
@@ -256,6 +271,7 @@ namespace FireCaffe
 
         private void btnOffers_Click(object sender, RoutedEventArgs e)
         {
+            ProductsPanel.Visibility = Visibility.Hidden;
             OffersPanel.Visibility = Visibility.Visible;
             BarcodeLib.Barcode barcode = new BarcodeLib.Barcode();
             System.Drawing.Image img = barcode.Encode(BarcodeLib.TYPE.CODE128, loggedClient.Password, 450, 250);
