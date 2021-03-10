@@ -287,7 +287,9 @@
 
 
         </Grid>
+        
         <StackPanel Grid.Row="1" Margin="20" Name="LoginPanel" Visibility="Hidden">
+            
             <Label Content="Login" 
                    Name="Login"
                        Foreground="FloralWhite" 
@@ -317,10 +319,11 @@
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
-            <TextBox Name="txtPasswordLogin" 
+            <PasswordBox Name="txtPasswordLogin" 
                      Background="BlanchedAlmond" 
                      Foreground="#330000"
                      Width="250"
+                     PasswordChar="*"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"/>
             <Button Name="btnSubmitLogin" 
@@ -480,6 +483,8 @@
             
             
         </StackPanel>
+        
+        
         <StackPanel Grid.Row="1" Margin="20" Name="SignUpPanel" Visibility="Hidden">
             <Label Content="Sign Up" 
                        Name="SignUp"

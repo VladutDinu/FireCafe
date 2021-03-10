@@ -100,7 +100,7 @@ namespace FireCaffe
             }
             else
             {
-                List<Client> c = clientServices.GetClientByCred(txtUsernameLogin.Text, txtPasswordLogin.Text);
+                List<Client> c = clientServices.GetClientByCred(txtUsernameLogin.Text, txtPasswordLogin.Password);
                 if (c.Count > 0)
                 {
                     if (c[0].Admin!=1) {
