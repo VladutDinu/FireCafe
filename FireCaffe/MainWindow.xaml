@@ -538,10 +538,11 @@
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
-            <TextBox Name="txtPasswordSignUp" 
+            <PasswordBox Name="txtPasswordSignUp" 
                      Background="BlanchedAlmond" 
                      Foreground="#330000"
                      Width="250"
+                     PasswordChar="*"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"/>
             <Button Name="btnSubmitSignUp" 

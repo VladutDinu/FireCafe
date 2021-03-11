@@ -105,7 +105,7 @@ namespace FireCaffe
                 client.FirstName = txtFirstName.Text;
                 client.LastName = txtLastNameSignUp.Text;
                 client.Username = txtFirstName.Text+ txtLastNameSignUp.Text;
-                client.Password = txtPasswordSignUp.Text;
+                client.Password = txtPasswordSignUp.Password;
                 List<Client> c = clientServices.GetClientByPassword(client.Password);
                 while (c.Count > 0)
                 {
@@ -264,9 +264,15 @@ namespace FireCaffe
         {
             ClientServices clientServices = new ClientServices();
             Product p = (Product)lvProducts.SelectedItem;
-            loggedClient.GoldenCups -= p.Price;
-            clientServices.Update(loggedClient);
-            GoldenCupsCount.Text = loggedClient.GoldenCups.ToString();
+            if (p.Price <= loggedClient.GoldenCups) { 
+                loggedClient.GoldenCups -= p.Price;
+                clientServices.Update(loggedClient);
+                GoldenCupsCount.Text = loggedClient.GoldenCups.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Not enough golden cups.");
+            }
         }
 
         private void btnOffers_Click(object sender, RoutedEventArgs e)
