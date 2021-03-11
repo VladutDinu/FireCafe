@@ -190,12 +190,25 @@
                        Name="AddProducts"
                        Foreground="FloralWhite"
                        Background="#0F0F2D"
-                       Grid.Column="4"
+                       Grid.Column="3"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Visibility="Hidden"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
                        Click="AddProducts_Click"
+                    Style="{DynamicResource RoundedButtonStyle}">
+
+            </Button>
+            <Button Content="Scan BarCode"
+                       Name="scanBarCOde"
+                       Foreground="FloralWhite"
+                       Background="#0F0F2D"
+                       Grid.Column="4"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Visibility="Hidden"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"
+                       Click="scanBarCOde_Click"
                     Style="{DynamicResource RoundedButtonStyle}">
 
             </Button>
@@ -439,7 +452,23 @@
             </Image>
             
         </StackPanel>
-        
+
+        <StackPanel Grid.Row="1" Margin="20" Name="BarCodeScannerPanel" Visibility="Hidden">
+            <Image Width="450" Height="250" Name="userBarCode" Margin="0,65,0,0">
+
+            </Image>
+            <Button x:Name="btnBrowseBarCode" 
+                    Background="#ff9933"
+                    Content="Browse" 
+                    Foreground="FloralWhite"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="25"
+                    FontFamily="Fonts/#ShipporiMinchoB1-Medium" 
+                    BorderBrush="Transparent"
+                    Margin="0, 10, 0, 0"
+                    BorderThickness="0" Click="btnBrowseBarCode_Click"/>
+        </StackPanel>
         <StackPanel Grid.Row="1" Margin="20" Name="ProductsPanel" Visibility="Hidden">
             <Label     Content=""
                        Name="productType"

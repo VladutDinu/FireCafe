@@ -18,6 +18,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing.Imaging;
 using System.IO;
+using Microsoft.Win32;
+using Pdf417EncoderLibrary;
+using IronBarCode;
 
 namespace FireCaffe
 {
@@ -91,10 +94,10 @@ namespace FireCaffe
             btnSignUp.Visibility = Visibility.Hidden;
 
             btnMenu.Visibility = Visibility.Visible;
-            btnOffers.Visibility = Visibility.Visible;
             AddProducts.Visibility = Visibility.Visible;
             btnLocations.Visibility = Visibility.Visible;
             btnContact.Visibility = Visibility.Visible;
+            scanBarCOde.Visibility = Visibility.Visible;
         }
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
@@ -279,9 +282,47 @@ namespace FireCaffe
         {
             ProductsPanel.Visibility = Visibility.Hidden;
             OffersPanel.Visibility = Visibility.Visible;
-            BarcodeLib.Barcode barcode = new BarcodeLib.Barcode();
-            System.Drawing.Image img = barcode.Encode(BarcodeLib.TYPE.CODE128, loggedClient.Password, 450, 250);
-            BarCode.Source = ToImageSource(img, ImageFormat.Png);
+            GeneratedBarcode MyBarCode = BarcodeWriter.CreateBarcode(loggedClient.Password, BarcodeWriterEncoding.Code128).ResizeTo(450, 250).SaveAsImage("barcode.jpeg");
+            BarCode.Source = ToImageSource(MyBarCode.Image, ImageFormat.Png);
+        }
+
+        private void btnBrowseBarCode_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.InitialDirectory = "E:\\an3facsem2\\pdpf2\\FireCaffe\\FireCaffe\\bin\\Debug";
+            dlg.Filter = "Image files (*.jpeg)|*.jpeg|All Files (*.*)|*.*";
+            dlg.RestoreDirectory = true;
+
+            if (dlg.ShowDialog() == true)
+            {
+                string selectedFileName = dlg.FileName;
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(selectedFileName);
+                bitmap.EndInit();
+                userBarCode.Source = bitmap;
+                BarcodeResult FormatsResult = BarcodeReader.QuicklyReadOneBarcode("barcode.jpeg", BarcodeEncoding.Code128);
+                string result = FormatsResult.Text;
+                
+                ClientServices clientServices = new ClientServices();
+                List<Client> scannedClient = clientServices.GetClientByPassword(result);
+                scannedClient[0].SilverCups += 2;
+                if (scannedClient[0].SilverCups >= 10) { 
+                    scannedClient[0].GoldenCups += 1;
+                    scannedClient[0].SilverCups = 0;
+                }
+
+                clientServices.Update(scannedClient[0]);
+                MessageBox.Show("User: "+scannedClient[0].Username+" has received 2 SilverCups");
+            }
+
+
+
+        }
+
+        private void scanBarCOde_Click(object sender, RoutedEventArgs e)
+        {
+            BarCodeScannerPanel.Visibility = Visibility.Visible;
         }
     }
 }

@@ -30,7 +30,6 @@ E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Prism.Wpf.xml
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\obj\Debug\FireCaffe.csproj.CopyComplete
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\FireCaffeDAL.exe
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\FireCaffeDAL.exe.config
-E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\BarcodeStandard.dll
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\System.Buffers.dll
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\System.Drawing.Common.dll
@@ -50,3 +49,6 @@ E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\System.Text.Encodings.Web.xml
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\System.Text.Json.xml
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\System.Threading.Tasks.Extensions.xml
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\System.ValueTuple.xml
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\IronBarCode.dll
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Pdf417EncoderLibrary.dll
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\IronBarCode.xml
