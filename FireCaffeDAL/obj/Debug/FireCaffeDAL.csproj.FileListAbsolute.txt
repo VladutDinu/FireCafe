@@ -29,3 +29,5 @@ E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\obj\Debug\FireCaffeDAL.exe
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\obj\Debug\FireCaffeDAL.pdb
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\obj\Debug\FireCaffeDAL.Migrations.DB_INITIAL.resources
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\obj\Debug\FireCaffeDAL.Migrations.Added_Type_Products.resources
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\System.Data.SQLite.dll
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\System.Data.SQLite.xml

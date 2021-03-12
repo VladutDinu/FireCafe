@@ -1,9 +1,9 @@
 ﻿<Window x:Class="FireCaffe.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FireCaffe"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         WindowStyle="None"
@@ -254,6 +254,7 @@
                        Visibility="Hidden"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
                        Background="#0F0F2D"
+                       Click="btnLocations_Click"
                        Style="{DynamicResource RoundedButtonStyle}">
 
             </Button>
@@ -523,7 +524,43 @@
             
             
         </StackPanel>
-        
+        <StackPanel Grid.Row="1" Margin="20" Name="LocationPanel" Visibility="Hidden">
+            
+            <Grid>
+                <m:Map x:Name="myMap"
+                        Center="45.653050, 25.582512"
+                        Height="350"
+                        ZoomLevel="16"
+                        CredentialsProvider="VMsYDomGxicKIhVXG41M~RsRZkvLK_f-rE42BVfa1qQ~AvPjDboxbUIU_lWbYOvVjGS6rRJCzCThofMELcPTg4gTUWJ4YHoK_jlTZ4ysf7tb" >
+                    <m:Pushpin Location="45.653050, 25.582512" Name="pushPin1" Visibility="Visible"></m:Pushpin>
+                    <m:Pushpin Location="45.644274, 25.595408" Name="pushPin2" Visibility="Hidden"></m:Pushpin>
+                </m:Map>
+            </Grid>
+            <StackPanel Orientation="Horizontal">
+                <Button Name="bntLocation1" 
+                    Background="#ff9933"
+                    Content="Location 1" 
+                    Foreground="FloralWhite"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="25"
+                    FontFamily="Fonts/#ShipporiMinchoB1-Medium" 
+                    Margin="0,10,0,0"
+                    BorderBrush="Transparent"
+                    BorderThickness="0" Click="bntLocation1_Click"/>
+                <Button Name="bntLocation2" 
+                    Background="#ff9933"
+                    Content="Location 2" 
+                    Foreground="FloralWhite"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="25"
+                    FontFamily="Fonts/#ShipporiMinchoB1-Medium" 
+                    Margin="0,10,0,0"
+                    BorderBrush="Transparent"
+                    BorderThickness="0" Click="bntLocation2_Click"/>
+            </StackPanel>
+        </StackPanel>
         <StackPanel Grid.Row="1" Margin="20" Name="SignUpPanel" Visibility="Hidden">
             <Label Content="Sign Up" 
                        Name="SignUp"

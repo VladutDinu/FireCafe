@@ -21,7 +21,9 @@ using System.IO;
 using Microsoft.Win32;
 using Pdf417EncoderLibrary;
 using IronBarCode;
-
+using System.Web;
+using System.Data.SQLite;
+using Microsoft.Maps.MapControl.WPF;
 namespace FireCaffe
 {
     /// <summary>
@@ -49,6 +51,7 @@ namespace FireCaffe
             OrdersToday.Content += rand.Next(people, 2*people).ToString();
             LoginPanel.Visibility = Visibility.Hidden;
             SignUpPanel.Visibility = Visibility.Hidden;
+
         }
         private static ImageSource ToImageSource(System.Drawing.Image image, ImageFormat imageFormat)
         {
@@ -309,20 +312,40 @@ namespace FireCaffe
                 scannedClient[0].SilverCups += 2;
                 if (scannedClient[0].SilverCups >= 10) { 
                     scannedClient[0].GoldenCups += 1;
-                    scannedClient[0].SilverCups = 0;
+                    scannedClient[0].SilverCups = scannedClient[0].SilverCups%10;
                 }
 
                 clientServices.Update(scannedClient[0]);
                 MessageBox.Show("User: "+scannedClient[0].Username+" has received 2 SilverCups");
             }
-
-
-
         }
 
         private void scanBarCOde_Click(object sender, RoutedEventArgs e)
         {
             BarCodeScannerPanel.Visibility = Visibility.Visible;
+        }
+
+        private void bntLocation1_Click(object sender, RoutedEventArgs e)
+        {
+            //45.653050, 25.582512
+            Microsoft.Maps.MapControl.WPF.Location location = new Microsoft.Maps.MapControl.WPF.Location(45.653050, 25.582512);
+            myMap.Center = location;
+            if (pushPin1.Visibility == Visibility.Hidden)
+                pushPin1.Visibility = Visibility.Visible;
+        }
+
+        private void bntLocation2_Click(object sender, RoutedEventArgs e)
+        {
+            //45.644274, 25.595408
+            Microsoft.Maps.MapControl.WPF.Location location = new Microsoft.Maps.MapControl.WPF.Location(45.644274, 25.595408);
+            myMap.Center = location;
+            if (pushPin2.Visibility == Visibility.Hidden)
+                pushPin2.Visibility = Visibility.Visible;
+        }
+
+        private void btnLocations_Click(object sender, RoutedEventArgs e)
+        {
+            LocationPanel.Visibility = Visibility.Visible;
         }
     }
 }
