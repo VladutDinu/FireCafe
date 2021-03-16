@@ -267,6 +267,7 @@
                        Visibility="Hidden"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
                        Background="#0F0F2D"
+                       Click="btnContact_Click"
                        Style="{DynamicResource RoundedButtonStyle}">
 
             </Button>
@@ -533,7 +534,7 @@
                         ZoomLevel="16"
                         CredentialsProvider="VMsYDomGxicKIhVXG41M~RsRZkvLK_f-rE42BVfa1qQ~AvPjDboxbUIU_lWbYOvVjGS6rRJCzCThofMELcPTg4gTUWJ4YHoK_jlTZ4ysf7tb" >
                     <m:Pushpin Location="45.653050, 25.582512" Name="pushPin1" Visibility="Visible"></m:Pushpin>
-                    <m:Pushpin Location="45.644274, 25.595408" Name="pushPin2" Visibility="Hidden"></m:Pushpin>
+                    <m:Pushpin Location="45.644274, 25.595408" Name="pushPin2" Visibility="Visible"></m:Pushpin>
                 </m:Map>
             </Grid>
             <StackPanel Orientation="Horizontal">
@@ -560,6 +561,24 @@
                     BorderBrush="Transparent"
                     BorderThickness="0" Click="bntLocation2_Click"/>
             </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="20" Name="ContactPanel" Visibility="Hidden">
+            <Label Content="Phone number: phone number" 
+                       Foreground="FloralWhite" 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"
+                       Margin="0,0,0,55">
+            </Label>
+            <Label Content="E-mail: e-mail@e-mail.com" 
+                       Foreground="FloralWhite" 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"
+                       Margin="0,0,0,55">
+            </Label>
         </StackPanel>
         <StackPanel Grid.Row="1" Margin="20" Name="SignUpPanel" Visibility="Hidden">
             <Label Content="Sign Up" 

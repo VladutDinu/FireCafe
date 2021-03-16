@@ -271,7 +271,7 @@ namespace FireCaffe
             ClientServices clientServices = new ClientServices();
             Product p = (Product)lvProducts.SelectedItem;
             if (p.Price <= loggedClient.GoldenCups) { 
-                loggedClient.GoldenCups -= p.Price;
+                loggedClient.GoldenCups -= Int32.Parse(p.Size);
                 clientServices.Update(loggedClient);
                 GoldenCupsCount.Text = loggedClient.GoldenCups.ToString();
             }
@@ -346,6 +346,11 @@ namespace FireCaffe
         private void btnLocations_Click(object sender, RoutedEventArgs e)
         {
             LocationPanel.Visibility = Visibility.Visible;
+        }
+
+        private void btnContact_Click(object sender, RoutedEventArgs e)
+        {
+            ContactPanel.Visibility = Visibility.Visible;
         }
     }
 }
