@@ -36,28 +36,7 @@ namespace FireCaffe
         private Client loggedClient;
         Panel[] panels = new Panel[8];
         private const int num = 10;
-        enum Sta
-        {
-            LoginPanel,
-            SignUpPanel,
-            AddProductsPanel,
-            OffersPanel,
-            ProductsPanel
-        }
-
-        private void load_panel()
-        {
-            panels.Append<Panel>(LoginPanel);
-            panels.Append<Panel>(SignUpPanel);
-            panels.Append<Panel>(AddProductsPanel);
-            panels.Append<Panel>(OffersPanel);
-            panels.Append<Panel>(ProductsPanel);
-            panels.Append<Panel>(BarCodeScannerPanel);
-            panels.Append<Panel>(LocationPanel);
-            panels.Append<Panel>(ContactPanel);
-            foreach (Panel p in panels)
-                p.Visibility = Visibility.Hidden;
-        }
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -198,6 +177,10 @@ namespace FireCaffe
         private void Tea_Click(object sender, RoutedEventArgs e)
         {
             OffersPanel.Visibility = Visibility.Hidden;
+            ContactPanel.Visibility = Visibility.Hidden;
+            LocationPanel.Visibility = Visibility.Hidden;
+            BarCodeScannerPanel.Visibility = Visibility.Hidden;
+            AddProductsPanel.Visibility = Visibility.Hidden;
             ProductServices productServices = new FireCaffeDAL.Services.ProductServices();
             ProductsPanel.Visibility = Visibility.Visible;
             lvProducts.ItemsSource = productServices.GetProductsByType("Tea");
@@ -212,6 +195,10 @@ namespace FireCaffe
         private void Coffee_Click(object sender, RoutedEventArgs e)
         {
             OffersPanel.Visibility = Visibility.Hidden;
+            ContactPanel.Visibility = Visibility.Hidden;
+            LocationPanel.Visibility = Visibility.Hidden;
+            BarCodeScannerPanel.Visibility = Visibility.Hidden;
+            AddProductsPanel.Visibility = Visibility.Hidden;
             ProductServices productServices = new FireCaffeDAL.Services.ProductServices();
             ProductsPanel.Visibility = Visibility.Visible;
             lvProducts.ItemsSource = productServices.GetProductsByType("Coffe");
@@ -221,6 +208,10 @@ namespace FireCaffe
         private void AddProducts_Click(object sender, RoutedEventArgs e)
         {
             OffersPanel.Visibility = Visibility.Hidden;
+            ContactPanel.Visibility = Visibility.Hidden;
+            ProductsPanel.Visibility = Visibility.Hidden;
+            LocationPanel.Visibility = Visibility.Hidden;
+            BarCodeScannerPanel.Visibility = Visibility.Hidden;
             AddProductsPanel.Visibility = Visibility.Visible;
         }
 
@@ -233,6 +224,10 @@ namespace FireCaffe
         private void HotDrinks_Click(object sender, RoutedEventArgs e)
         {
             OffersPanel.Visibility = Visibility.Hidden;
+            ContactPanel.Visibility = Visibility.Hidden;
+            LocationPanel.Visibility = Visibility.Hidden;
+            BarCodeScannerPanel.Visibility = Visibility.Hidden;
+            AddProductsPanel.Visibility = Visibility.Hidden;
             ProductServices productServices = new FireCaffeDAL.Services.ProductServices();
             ProductsPanel.Visibility = Visibility.Visible;
             lvProducts.ItemsSource = productServices.GetProductsByType("HotDrink");
@@ -242,6 +237,10 @@ namespace FireCaffe
         private void Desserts_Click(object sender, RoutedEventArgs e)
         {
             OffersPanel.Visibility = Visibility.Hidden;
+            ContactPanel.Visibility = Visibility.Hidden;
+            LocationPanel.Visibility = Visibility.Hidden;
+            BarCodeScannerPanel.Visibility = Visibility.Hidden;
+            AddProductsPanel.Visibility = Visibility.Hidden;
             ProductServices productServices = new FireCaffeDAL.Services.ProductServices();
             ProductsPanel.Visibility = Visibility.Visible;
             lvProducts.ItemsSource = productServices.GetProductsByType("Dessert");
@@ -273,6 +272,8 @@ namespace FireCaffe
         private void btnOffers_Click(object sender, RoutedEventArgs e)
         {
             ProductsPanel.Visibility = Visibility.Hidden;
+            ContactPanel.Visibility = Visibility.Hidden;
+            LocationPanel.Visibility = Visibility.Hidden;
             OffersPanel.Visibility = Visibility.Visible;
             GeneratedBarcode MyBarCode = BarcodeWriter.CreateBarcode(loggedClient.Password, BarcodeWriterEncoding.Code128).ResizeTo(450, 250).SaveAsImage("barcode.jpeg");
             BarCode.Source = ToImageSource(MyBarCode.Image, ImageFormat.Png);
@@ -311,9 +312,11 @@ namespace FireCaffe
 
         private void scanBarCOde_Click(object sender, RoutedEventArgs e)
         {
-            BarCodeScannerPanel.Visibility = Visibility.Hidden;
-            BarCodeScannerPanel.Visibility = Visibility.Hidden;
-
+            OffersPanel.Visibility = Visibility.Hidden;
+            ContactPanel.Visibility = Visibility.Hidden;
+            ProductsPanel.Visibility = Visibility.Hidden;
+            LocationPanel.Visibility = Visibility.Hidden;
+            AddProductsPanel.Visibility = Visibility.Hidden;
             BarCodeScannerPanel.Visibility = Visibility.Visible;
         }
 
@@ -337,12 +340,22 @@ namespace FireCaffe
 
         private void btnLocations_Click(object sender, RoutedEventArgs e)
         {
+            OffersPanel.Visibility = Visibility.Hidden;
+            ContactPanel.Visibility = Visibility.Hidden;
+            ProductsPanel.Visibility = Visibility.Hidden;
             LocationPanel.Visibility = Visibility.Visible;
+            AddProductsPanel.Visibility = Visibility.Hidden;
+            BarCodeScannerPanel.Visibility = Visibility.Hidden;
         }
 
         private void btnContact_Click(object sender, RoutedEventArgs e)
         {
+            OffersPanel.Visibility = Visibility.Hidden;
             ContactPanel.Visibility = Visibility.Visible;
+            ProductsPanel.Visibility = Visibility.Hidden;
+            AddProductsPanel.Visibility = Visibility.Hidden;
+            BarCodeScannerPanel.Visibility = Visibility.Hidden;
+            LocationPanel.Visibility = Visibility.Hidden;
         }
     }
 }
