@@ -209,6 +209,10 @@
       <Project>{86afe9c5-768d-4b37-b4fa-829281c00fa6}</Project>
       <Name>FireCaffeDAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WpfApp1\FireCaffeBussinessLogic.csproj">
+      <Project>{6132f408-c491-4ead-aa10-b450f56322e3}</Project>
+      <Name>FireCaffeBussinessLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

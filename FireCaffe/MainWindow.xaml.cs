@@ -1,6 +1,7 @@
 ﻿using FireCaffeDAL;
 using FireCaffeDAL.Models;
 using FireCaffeDAL.Services;
+using WpfApp1.Services;
 using System;
 using System.Data.Entity;
 using System.Collections.Generic;
@@ -33,6 +34,8 @@ namespace FireCaffe
     {
         MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
         private Client loggedClient;
+        Panel[] panels = new Panel[8];
+        private const int num = 10;
         enum Sta
         {
             LoginPanel,
@@ -42,6 +45,19 @@ namespace FireCaffe
             ProductsPanel
         }
 
+        private void load_panel()
+        {
+            panels.Append<Panel>(LoginPanel);
+            panels.Append<Panel>(SignUpPanel);
+            panels.Append<Panel>(AddProductsPanel);
+            panels.Append<Panel>(OffersPanel);
+            panels.Append<Panel>(ProductsPanel);
+            panels.Append<Panel>(BarCodeScannerPanel);
+            panels.Append<Panel>(LocationPanel);
+            panels.Append<Panel>(ContactPanel);
+            foreach (Panel p in panels)
+                p.Visibility = Visibility.Hidden;
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -49,8 +65,7 @@ namespace FireCaffe
             var people = rand.Next(0, 500);
             PeopleToday.Content += people.ToString();
             OrdersToday.Content += rand.Next(people, 2*people).ToString();
-            LoginPanel.Visibility = Visibility.Hidden;
-            SignUpPanel.Visibility = Visibility.Hidden;
+            //load_panel();
 
         }
         private static ImageSource ToImageSource(System.Drawing.Image image, ImageFormat imageFormat)
@@ -107,57 +122,43 @@ namespace FireCaffe
             ClientServices clientServices = new ClientServices();
             if (SignUpPanel.Visibility==Visibility.Visible)
             {
-                Client client = new Client();
-                client.FirstName = txtFirstName.Text;
-                client.LastName = txtLastNameSignUp.Text;
-                client.Username = txtFirstName.Text+ txtLastNameSignUp.Text;
-                client.Password = txtPasswordSignUp.Password;
-                List<Client> c = clientServices.GetClientByPassword(client.Password);
-                while (c.Count > 0)
+                AdminServices adminServices = new AdminServices();
+                if(!adminServices.addNewClient(txtFirstName.Text, txtLastNameSignUp.Text, txtPasswordSignUp.Password))
                 {
                     txtPasswordSignUp.Clear();
                     MessageBox.Show("This password has been used by other members, please enter another one");
-                    c = clientServices.GetClientByPassword(client.Password);
-                    if (c.Count == 0)
-                        break;
                 }
-                client.Admin = 0;
-                client.GoldenCups = 0;
-                client.SilverCups = 0;
-                if (c.Count <= 0)
+                else
                 {
-                    clientServices.AddClient(client);
-                    mainWindowViewModel.Clients.Add(client);
+                    List<Client> c = clientServices.GetClientByCred(txtFirstName.Text+ txtLastNameSignUp.Text, txtPasswordSignUp.Password);
+                    mainWindowViewModel.Clients.Add(c[0]);
                     SignUpPanel.Visibility = Visibility.Hidden;
                     MessageBox.Show("Account created.");
-                    show_hide_standard(client);
-                    loggedClient = client;
+                    show_hide_standard(c[0]);
+                    loggedClient = c[0];
                 }
                 
             }
             else
             {
-                List<Client> c = clientServices.GetClientByCred(txtUsernameLogin.Text, txtPasswordLogin.Password);
-                if (c.Count > 0)
-                {
-                    if (c[0].Admin!=1) {
-                        LoginPanel.Visibility = Visibility.Hidden;
-                        show_hide_standard(c[0]);
-                        loggedClient = c[0];
-                        
-                    }
-                    else
-                    {
-                        LoginPanel.Visibility = Visibility.Hidden;
-                        show_hide_admin();
-                    }
-                                       
-                }
-                else
+                AdminServices adminServices = new AdminServices();
+                Client c = adminServices.loginClient(txtUsernameLogin.Text, txtPasswordLogin.Password);
+                if ( c == null)
                 {
                     txtPasswordLogin.Clear();
                     txtUsernameLogin.Clear();
                     MessageBox.Show("Wrong credentials.");
+                }
+                else if(c.Admin !=1)
+                {
+                    LoginPanel.Visibility = Visibility.Hidden;
+                    show_hide_standard(c);
+                    loggedClient = c;
+                }
+                else
+                {
+                    LoginPanel.Visibility = Visibility.Hidden;
+                    show_hide_admin();
                 }
 
             }
@@ -225,15 +226,8 @@ namespace FireCaffe
 
         private void btnAddProduct_Click(object sender, RoutedEventArgs e)
         {
-
-            ProductServices productServices = new FireCaffeDAL.Services.ProductServices();
-            Product product = new Product();
-            product.Name = txtProductName.Text;
-            product.Price = Int32.Parse(txtProductPrice.Text);
-            product.Description = txtDescripton.Text;
-            product.Size = txtSize.Text;
-            product.Type = txtType.Text;
-            productServices.AddProduct(product);
+            AdminServices adminServices = new AdminServices();
+            adminServices.addProduct(txtProductName.Text, txtProductPrice.Text, txtDescripton.Text, txtSize.Text, txtType.Text);
         }
 
         private void HotDrinks_Click(object sender, RoutedEventArgs e)
@@ -256,29 +250,24 @@ namespace FireCaffe
 
         private void btnBuyProduct_Click(object sender, RoutedEventArgs e)
         {
-            ClientServices clientServices = new ClientServices();
-            Product p = (Product)lvProducts.SelectedItem;
-            loggedClient.SilverCups += Int32.Parse(p.Size);
-            loggedClient.GoldenCups += loggedClient.SilverCups/10;
-            loggedClient.SilverCups = loggedClient.SilverCups % 10;
-            clientServices.Update(loggedClient);
+            UserServices us = new UserServices();
+            us.buyProduct(loggedClient, (Product)lvProducts.SelectedItem);
             SilverCupsCount.Text = loggedClient.SilverCups.ToString();
             GoldenCupsCount.Text = loggedClient.GoldenCups.ToString();
         }
 
         private void btnBuyWithGoldenCups_Click(object sender, RoutedEventArgs e)
         {
-            ClientServices clientServices = new ClientServices();
-            Product p = (Product)lvProducts.SelectedItem;
-            if (p.Price <= loggedClient.GoldenCups) { 
-                loggedClient.GoldenCups -= Int32.Parse(p.Size);
-                clientServices.Update(loggedClient);
+            UserServices us = new UserServices();
+            if(us.buyProduct_GoldenCups(loggedClient, (Product)lvProducts.SelectedItem))
+            {
                 GoldenCupsCount.Text = loggedClient.GoldenCups.ToString();
             }
             else
             {
-                MessageBox.Show("Not enough golden cups.");
+                MessageBox.Show("Not enough golden cups. :(");
             }
+            
         }
 
         private void btnOffers_Click(object sender, RoutedEventArgs e)
@@ -310,7 +299,7 @@ namespace FireCaffe
                 ClientServices clientServices = new ClientServices();
                 List<Client> scannedClient = clientServices.GetClientByPassword(result);
                 scannedClient[0].SilverCups += 2;
-                if (scannedClient[0].SilverCups >= 10) { 
+                if (scannedClient[0].SilverCups >= num) { 
                     scannedClient[0].GoldenCups += 1;
                     scannedClient[0].SilverCups = scannedClient[0].SilverCups%10;
                 }
@@ -322,6 +311,9 @@ namespace FireCaffe
 
         private void scanBarCOde_Click(object sender, RoutedEventArgs e)
         {
+            BarCodeScannerPanel.Visibility = Visibility.Hidden;
+            BarCodeScannerPanel.Visibility = Visibility.Hidden;
+
             BarCodeScannerPanel.Visibility = Visibility.Visible;
         }
 

@@ -70,3 +70,6 @@ E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Microsoft.Maps.MapControl.WPF.
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\BingMapsRESTToolkit.pdb
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\BingMapsRESTToolkit.xml
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Microsoft.Maps.MapControl.WPF.xml
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\WpfApp1.exe
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\WpfApp1.pdb
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\WpfApp1.exe.config
