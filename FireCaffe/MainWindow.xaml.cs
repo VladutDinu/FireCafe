@@ -25,6 +25,8 @@ using IronBarCode;
 using System.Web;
 using System.Data.SQLite;
 using Microsoft.Maps.MapControl.WPF;
+using log4net;
+using log4net.Config;
 namespace FireCaffe
 {
     /// <summary>
@@ -36,10 +38,12 @@ namespace FireCaffe
         private Client loggedClient;
         Panel[] panels = new Panel[8];
         private const int num = 10;
-        
+        FileStream fs = new FileStream("../../log4netConfig.xml", FileMode.Open);
+        private protected ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public MainWindow()
         {
             InitializeComponent();
+            XmlConfigurator.Configure(fs);
             var rand = new Random();
             var people = rand.Next(0, 500);
             PeopleToday.Content += people.ToString();
@@ -115,6 +119,7 @@ namespace FireCaffe
                     MessageBox.Show("Account created.");
                     show_hide_standard(c[0]);
                     loggedClient = c[0];
+                    logger.Info("New client has been added to DB "+ loggedClient.Username);
                 }
                 
             }
@@ -127,17 +132,21 @@ namespace FireCaffe
                     txtPasswordLogin.Clear();
                     txtUsernameLogin.Clear();
                     MessageBox.Show("Wrong credentials.");
+                    logger.Warn("Wrong credentials.");
                 }
                 else if(c.Admin !=1)
                 {
                     LoginPanel.Visibility = Visibility.Hidden;
                     show_hide_standard(c);
                     loggedClient = c;
+                    logger.Info("Simple user logged in " + loggedClient.Username);
                 }
                 else
                 {
                     LoginPanel.Visibility = Visibility.Hidden;
                     show_hide_admin();
+                    loggedClient = c;
+                    logger.Info("Admin logged in " + loggedClient.Username);
                 }
 
             }
