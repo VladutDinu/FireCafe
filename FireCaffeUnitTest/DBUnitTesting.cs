@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Moq;
 
 namespace FireCaffeUnitTest
 {
@@ -14,25 +15,44 @@ namespace FireCaffeUnitTest
     public class DBUnitTesting
     {
         [TestMethod]
-        public void DBCountAll()
+        public void DBMockClientNameTest()
         {
-            ClientServices cs = new ClientServices();
-            List<Client> clients = cs.GetClients();
-            Assert.AreEqual(4, clients.Count);
+            var mockContext = new Mock<FireCaffeDAL.Models.Client>();
+            var client = new Mock<FireCaffeDAL.Models.IClient>();
+            client.SetupGet(p => p.Id).Returns(1);
+            client.SetupGet(p => p.FirstName).Returns("Joydip");
+            client.SetupGet(p => p.LastName).Returns("Kanjilal");
+            Assert.AreEqual("Joydip", client.Object.FirstName);
+            Assert.AreEqual("Kanjilal", client.Object.LastName);
         }
         [TestMethod]
-        public void DBGetByPassword()
+        public void DBMockClientPasswordTest()
         {
-            ClientServices cs = new ClientServices();
-            List<Client> clients = cs.GetClientByPassword("c");
-            Assert.AreEqual(1, clients.Count);
+            var mockContext = new Mock<FireCaffeDAL.Models.Client>();
+            var client = new Mock<FireCaffeDAL.Models.IClient>();
+            client.SetupGet(p => p.Id).Returns(1);
+            client.SetupGet(p => p.Password).Returns("Joydip");
+            Assert.AreEqual("Joydip", client.Object.Password);
+
         }
         [TestMethod]
-        public void DBGetByCreds()
+        public void DBMockProductDescriptionTest()
         {
-            ClientServices cs = new ClientServices();
-            List<Client> clients = cs.GetClientByCred("bb","c");
-            Assert.AreEqual(1, clients.Count);
+            var mockContext = new Mock<FireCaffeDAL.Models.Product>();
+            var client = new Mock<FireCaffeDAL.Models.IProduct>();
+            client.SetupGet(p => p.Id).Returns(1);
+            client.SetupGet(p => p.Description).Returns("Joydip");
+            Assert.AreEqual("Joydip", client.Object.Description);
+        }
+        [TestMethod]
+        public void DBMockProductTypeTest()
+        {
+            var mockContext = new Mock<FireCaffeDAL.Models.Product>();
+            var client = new Mock<FireCaffeDAL.Models.IProduct>();
+            client.SetupGet(p => p.Id).Returns(1);
+            client.SetupGet(p => p.Type).Returns("Joydip");
+            Assert.AreEqual("Joydip", client.Object.Type);
+
         }
     }
 }

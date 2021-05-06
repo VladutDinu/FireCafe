@@ -75,3 +75,7 @@ E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\WpfApp1.pdb
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\WpfApp1.exe.config
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\log4net.dll
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\log4net.xml
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Castle.Core.dll
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Moq.dll
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Castle.Core.xml
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Moq.xml

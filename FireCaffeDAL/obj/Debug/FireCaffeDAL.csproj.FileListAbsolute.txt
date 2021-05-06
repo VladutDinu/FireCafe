@@ -31,3 +31,11 @@ E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\obj\Debug\FireCaffeDAL.Migrations.DB_
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\obj\Debug\FireCaffeDAL.Migrations.Added_Type_Products.resources
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\System.Data.SQLite.dll
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\System.Data.SQLite.xml
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\Castle.Core.dll
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\Moq.dll
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\Castle.Core.xml
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\Moq.xml
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\System.Threading.Tasks.Extensions.xml
