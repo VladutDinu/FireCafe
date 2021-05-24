@@ -14,7 +14,6 @@ E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\Prism.pdb
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\Prism.xml
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\Prism.Wpf.pdb
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\Prism.Wpf.xml
-E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\obj\Debug\FireCaffeDAL.csprojAssemblyReference.cache
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\obj\Debug\MainWindow.g.cs
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\obj\Debug\App.g.cs
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\obj\Debug\FireCaffeDAL_MarkupCompile.cache

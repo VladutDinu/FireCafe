@@ -1,9 +1,10 @@
-﻿<Window x:Class="FireCaffe.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Properties="clr-namespace:FireCaffe.Properties" x:Class="FireCaffe.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         WindowStyle="None"
@@ -87,10 +88,8 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="550">
-            </ColumnDefinition>
-            <ColumnDefinition>
-            </ColumnDefinition>
+            <ColumnDefinition Width="550"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <Grid Background="#0F0F2D" Grid.ColumnSpan="2">
@@ -108,16 +107,18 @@
                 <ColumnDefinition Width="90"/>
             </Grid.ColumnDefinitions>
             <Image Source="Images/logo.png" 
-                   Margin="6,0,7,0"/>
+                   Margin="6,0,7,0">
+                <Image.DataContext>
+                    <Properties:Resources/>
+                </Image.DataContext>
+            </Image>
             <TextBlock Text="FireCaffe"
                        Foreground="FloralWhite"
                        Grid.Column="1"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
-                       FontFamily="Fonts/#ShipporiMinchoB1-Medium">
-
-            </TextBlock>
-            <Button    Name="btnMenu"
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
+            <Button    x:Name="btnMenu"
                        Content="Menu"
                        Foreground="FloralWhite"
                        Grid.Column="2"
@@ -131,15 +132,15 @@
 
                 <Button.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Name="Coffee" Foreground="FloralWhite" Header="Coffee" Background="#0F0F2D" Click="Coffee_Click"/>
-                        <MenuItem Name="Desserts" Foreground="FloralWhite" Header="Desserts" Background="#0F0F2D" Click="Desserts_Click"/>
-                        <MenuItem Name="HotDrinks" Foreground="FloralWhite" Header="Hot drinks" Background="#0F0F2D" Click="HotDrinks_Click"/>
-                        <MenuItem Name="Tea" Foreground="FloralWhite" Header="Tea" Background="#0F0F2D" Click="Tea_Click"/>
+                        <MenuItem x:Name="Coffee" Foreground="FloralWhite" Header="Coffee" Background="#0F0F2D" Click="Coffee_Click"/>
+                        <MenuItem x:Name="Desserts" Foreground="FloralWhite" Header="Desserts" Background="#0F0F2D" Click="Desserts_Click"/>
+                        <MenuItem x:Name="HotDrinks" Foreground="FloralWhite" Header="Hot drinks" Background="#0F0F2D" Click="HotDrinks_Click"/>
+                        <MenuItem x:Name="Tea" Foreground="FloralWhite" Header="Tea" Background="#0F0F2D" Click="Tea_Click"/>
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>
             <Button Content="Login"
-                       Name="btnLogin"
+                       x:Name="btnLogin"
                        Click="Login_Click"
                        Foreground="FloralWhite"
                        Grid.Column="2"
@@ -147,11 +148,9 @@
                        HorizontalAlignment="Center"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
                        Background="#0F0F2D"
-                       Style="{DynamicResource RoundedButtonStyle}">
-
-            </Button>
+                       Style="{DynamicResource RoundedButtonStyle}"/>
             <Button Content="Offers"
-                       Name="btnOffers"
+                       x:Name="btnOffers"
                        Foreground="FloralWhite"
                        Grid.Column="3"
                        VerticalAlignment="Center"
@@ -160,11 +159,9 @@
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
                        Background="#0F0F2D"
                        Style="{DynamicResource RoundedButtonStyle}"
-                       Click="btnOffers_Click">
-
-            </Button>
+                       Click="btnOffers_Click"/>
             <Button Content="SignUp"
-                       Name="btnSignUp"
+                       x:Name="btnSignUp"
                        Click="SignUp_Click"
                        Foreground="FloralWhite"
                        Grid.Column="3"
@@ -172,22 +169,18 @@
                        HorizontalAlignment="Center"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
                        Background="#0F0F2D"
-                       Style="{DynamicResource RoundedButtonStyle}">
-
-            </Button>
+                       Style="{DynamicResource RoundedButtonStyle}"/>
             <TextBlock Text="SilverCups"
-                       Name="SilverCups"
+                       x:Name="SilverCups"
                        Foreground="FloralWhite"
                        Background="#0F0F2D"
                        Grid.Column="4"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Visibility="Hidden"
-                       FontFamily="Fonts/#ShipporiMinchoB1-Medium">
-
-            </TextBlock>
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
             <Button Content="Add Products"
-                       Name="AddProducts"
+                       x:Name="AddProducts"
                        Foreground="FloralWhite"
                        Background="#0F0F2D"
                        Grid.Column="3"
@@ -196,11 +189,9 @@
                        Visibility="Hidden"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
                        Click="AddProducts_Click"
-                    Style="{DynamicResource RoundedButtonStyle}">
-
-            </Button>
+                    Style="{DynamicResource RoundedButtonStyle}"/>
             <Button Content="Scan BarCode"
-                       Name="scanBarCOde"
+                       x:Name="scanBarCOde"
                        Foreground="FloralWhite"
                        Background="#0F0F2D"
                        Grid.Column="4"
@@ -209,44 +200,36 @@
                        Visibility="Hidden"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
                        Click="scanBarCOde_Click"
-                    Style="{DynamicResource RoundedButtonStyle}">
-
-            </Button>
+                    Style="{DynamicResource RoundedButtonStyle}"/>
             <TextBlock Text=""
-                       Name="SilverCupsCount"
+                       x:Name="SilverCupsCount"
                        Foreground="FloralWhite"
                        Background="#0F0F2D"
                        Grid.Column="5"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Visibility="Hidden"
-                       FontFamily="Fonts/#ShipporiMinchoB1-Medium">
-
-            </TextBlock>
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
             <TextBlock Text="GoldenCups"
-                       Name="GoldenCups"
+                       x:Name="GoldenCups"
                        Foreground="FloralWhite"
                        Background="#0F0F2D"
                        Grid.Column="6"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Visibility="Hidden"
-                       FontFamily="Fonts/#ShipporiMinchoB1-Medium">
-
-            </TextBlock>
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
             <TextBlock Text=""
-                       Name="GoldenCupsCount"
+                       x:Name="GoldenCupsCount"
                        Foreground="FloralWhite"
                        Background="#0F0F2D"
                        Grid.Column="7"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Visibility="Hidden"
-                       FontFamily="Fonts/#ShipporiMinchoB1-Medium">
-
-            </TextBlock>
+                       FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
             <Button Content="Locations"
-                       Name="btnLocations"
+                       x:Name="btnLocations"
                        Foreground="FloralWhite"
                        Grid.Column="8"
                        VerticalAlignment="Center"
@@ -255,11 +238,9 @@
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
                        Background="#0F0F2D"
                        Click="btnLocations_Click"
-                       Style="{DynamicResource RoundedButtonStyle}">
-
-            </Button>
+                       Style="{DynamicResource RoundedButtonStyle}"/>
             <Button Content="Contact"
-                       Name="btnContact"
+                       x:Name="btnContact"
                        Foreground="FloralWhite"
                        Grid.Column="9"
                        VerticalAlignment="Center"
@@ -268,21 +249,17 @@
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
                        Background="#0F0F2D"
                        Click="btnContact_Click"
-                       Style="{DynamicResource RoundedButtonStyle}">
-
-            </Button>
-            <Button Name="Minimize" Grid.Column="10" Background="#0F0F2D" Height="25" Width="25" BorderThickness="0" HorizontalAlignment="Left" >
+                       Style="{DynamicResource RoundedButtonStyle}"/>
+            <Button x:Name="Minimize" Grid.Column="10" Background="#0F0F2D" Height="25" Width="25" BorderThickness="0" HorizontalAlignment="Left" >
                 <StackPanel >
                     <Image Source="Images/minimize.PNG"
-                            HorizontalAlignment="Center">
-
-                    </Image>
+                            HorizontalAlignment="Center"/>
 
                 </StackPanel>
 
             </Button>
 
-            <Button Name="Maximize" Grid.Column="10" Background="#0F0F2D" Height="25" Width="25" BorderThickness="0" HorizontalAlignment="Center">
+            <Button x:Name="Maximize" Grid.Column="10" Background="#0F0F2D" Height="25" Width="25" BorderThickness="0" HorizontalAlignment="Center">
                 <StackPanel>
                     <Image Source="Images/maximize.PNG"
 
@@ -290,7 +267,7 @@
                 </StackPanel>
             </Button>
 
-            <Button Name="Exit" Click="Exit_Click_1" Grid.Column="10" Background="#0F0F2D" Height="25" Width="25" BorderThickness="0" HorizontalAlignment="Right">
+            <Button x:Name="Exit" Click="Exit_Click_1" Grid.Column="10" Background="#0F0F2D" Height="25" Width="25" BorderThickness="0" HorizontalAlignment="Right">
                 <StackPanel>
                     <Image Source="Images/close.PNG"
                    HorizontalAlignment="Left"/>
@@ -305,45 +282,44 @@
         </Grid>
 
 
-        <StackPanel Grid.Row="1" Margin="20" Name="LoginPanel" Visibility="Hidden">
-            
+        <StackPanel Grid.Row="1" Margin="20" x:Name="LoginPanel" Visibility="Hidden">
+
             <Label Content="Login" 
-                   Name="Login"
+                   x:Name="Login"
                        Foreground="FloralWhite" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
-                       Margin="0,0,0,55">
-            </Label>
+                       Margin="0,0,0,55"/>
             <Label Content="Username"
-                   Name="UsernameLogin"
+                   x:Name="UsernameLogin"
                        Foreground="FloralWhite" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
-            <TextBox Name="txtUsernameLogin" 
+            <TextBox x:Name="txtUsernameLogin" 
                      Background="BlanchedAlmond" 
                      Foreground="#330000"
                      Width="250"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"/>
             <Label Content="Password"
-                   Name="PasswordLogin"
+                   x:Name="PasswordLogin"
                        Foreground="FloralWhite" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
-            <PasswordBox Name="txtPasswordLogin" 
+            <PasswordBox x:Name="txtPasswordLogin" 
                      Background="BlanchedAlmond" 
                      Foreground="#330000"
                      Width="250"
                      PasswordChar="*"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"/>
-            <Button Name="btnSubmitLogin" 
+            <Button x:Name="btnSubmitLogin" 
                     Background="#ff9933"
                     Content="Submit" 
                     Foreground="FloralWhite"
@@ -357,82 +333,79 @@
 
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Margin="20" Name="AddProductsPanel" Visibility="Hidden">
+        <StackPanel Grid.Row="1" Margin="20" x:Name="AddProductsPanel" Visibility="Hidden">
             <Label Content="Add new product" 
-                   Name="pProduct"
+                   x:Name="pProduct"
                        Foreground="FloralWhite" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
-                       Margin="0,0,0,10">
-            </Label>
+                       Margin="0,0,0,10"/>
             <Label Content="Product name"
-                   Name="pName"
+                   x:Name="pName"
                        Foreground="FloralWhite" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
-            <TextBox Name="txtProductName" 
+            <TextBox x:Name="txtProductName" 
                      Background="BlanchedAlmond" 
                      Foreground="#330000"
                      Width="250"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"/>
             <Label Content="Product price"
-                   Name="pPrice"
+                   x:Name="pPrice"
                        Foreground="FloralWhite" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
-            <TextBox Name="txtProductPrice" 
+            <TextBox x:Name="txtProductPrice" 
                      Background="BlanchedAlmond" 
                      Foreground="#330000"
                      Width="250"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"/>
             <Label Content="Product description"
-                   Name="pDescripton"
+                   x:Name="pDescripton"
                        Foreground="FloralWhite" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
-            <TextBox Name="txtDescripton" 
+            <TextBox x:Name="txtDescripton" 
                      Background="BlanchedAlmond" 
                      Foreground="#330000"
                      Width="250"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"/>
             <Label Content="Product size"
-                   Name="pSize"
+                   x:Name="pSize"
                        Foreground="FloralWhite" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
-            <TextBox Name="txtSize" 
+            <TextBox x:Name="txtSize" 
                      Background="BlanchedAlmond" 
                      Foreground="#330000"
                      Width="250"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"/>
             <Label Content="Product type"
-                   Name="pType"
+                   x:Name="pType"
                        Foreground="FloralWhite" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
-            <TextBox Name="txtType" 
+            <TextBox x:Name="txtType" 
                      Background="BlanchedAlmond" 
                      Foreground="#330000"
                      Width="250"
-                     HorizontalAlignment="Center">
-
-            </TextBox>
+                     HorizontalAlignment="Center"/>
             <Button x:Name="btnAddProduct" 
                     Background="#ff9933"
                     Content="Submit" 
@@ -447,18 +420,14 @@
 
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Margin="20" Name="OffersPanel" Visibility="Hidden">
+        <StackPanel Grid.Row="1" Margin="20" x:Name="OffersPanel" Visibility="Hidden">
 
-            <Image Width="450" Height="250" Name="BarCode" Margin="0,65,0,0">
-                
-            </Image>
-            
+            <Image Width="450" Height="250" x:Name="BarCode" Margin="0,65,0,0"/>
+
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Margin="20" Name="BarCodeScannerPanel" Visibility="Hidden">
-            <Image Width="450" Height="250" Name="userBarCode" Margin="0,65,0,0">
-
-            </Image>
+        <StackPanel Grid.Row="1" Margin="20" x:Name="BarCodeScannerPanel" Visibility="Hidden">
+            <Image Width="450" Height="250" x:Name="userBarCode" Margin="0,65,0,0"/>
             <Button x:Name="btnBrowseBarCode" 
                     Background="#ff9933"
                     Content="Browse" 
@@ -471,9 +440,9 @@
                     Margin="0, 10, 0, 0"
                     BorderThickness="0" Click="btnBrowseBarCode_Click"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" Margin="20" Name="ProductsPanel" Visibility="Hidden">
+        <StackPanel Grid.Row="1" Margin="20" x:Name="ProductsPanel" Visibility="Hidden">
             <Label     Content=""
-                       Name="productType"
+                       x:Name="productType"
                        Foreground="FloralWhite" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
@@ -482,7 +451,7 @@
                        FontFamily="Fonts/#ShipporiMinchoB1-Bold"/>
             <ListView ItemsSource="{Binding Product}" 
                       SelectedItem="{Binding Product}" 
-                      Name="lvProducts" 
+                      x:Name="lvProducts" 
                       HorizontalAlignment="Left"
                       Height="302" VerticalAlignment="Top"
                       Width="492" SelectionChanged="lvProducts_SelectionChanged" 
@@ -522,23 +491,23 @@
                     BorderBrush="Transparent"
                     BorderThickness="0" Click="btnBuyWithGoldenCups_Click"/>
             </StackPanel>
-            
-            
+
+
         </StackPanel>
-        <StackPanel Grid.Row="1" Margin="20" Name="LocationPanel" Visibility="Hidden">
-            
+        <StackPanel Grid.Row="1" Margin="20" x:Name="LocationPanel" Visibility="Hidden">
+
             <Grid>
                 <m:Map x:Name="myMap"
                         Center="45.653050, 25.582512"
                         Height="350"
                         ZoomLevel="16"
                         CredentialsProvider="VMsYDomGxicKIhVXG41M~RsRZkvLK_f-rE42BVfa1qQ~AvPjDboxbUIU_lWbYOvVjGS6rRJCzCThofMELcPTg4gTUWJ4YHoK_jlTZ4ysf7tb" >
-                    <m:Pushpin Location="45.653050, 25.582512" Name="pushPin1" Visibility="Visible"></m:Pushpin>
-                    <m:Pushpin Location="45.644274, 25.595408" Name="pushPin2" Visibility="Visible"></m:Pushpin>
+                    <m:Pushpin Location="45.653050, 25.582512" x:Name="pushPin1" Visibility="Visible"/>
+                    <m:Pushpin Location="45.644274, 25.595408" x:Name="pushPin2" Visibility="Visible"/>
                 </m:Map>
             </Grid>
             <StackPanel Orientation="Horizontal">
-                <Button Name="bntLocation1" 
+                <Button x:Name="bntLocation1" 
                     Background="#ff9933"
                     Content="Location 1" 
                     Foreground="FloralWhite"
@@ -549,7 +518,7 @@
                     Margin="0,10,0,0"
                     BorderBrush="Transparent"
                     BorderThickness="0" Click="bntLocation1_Click"/>
-                <Button Name="bntLocation2" 
+                <Button x:Name="bntLocation2" 
                     Background="#ff9933"
                     Content="Location 2" 
                     Foreground="FloralWhite"
@@ -562,75 +531,72 @@
                     BorderThickness="0" Click="bntLocation2_Click"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Row="1" Margin="20" Name="ContactPanel" Visibility="Hidden">
+        <StackPanel Grid.Row="1" Margin="20" x:Name="ContactPanel" Visibility="Hidden">
             <Label Content="Phone number: phone number" 
                        Foreground="FloralWhite" 
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
-                       Margin="0,0,0,55">
-            </Label>
+                       Margin="0,0,0,55"/>
             <Label Content="E-mail: e-mail@e-mail.com" 
                        Foreground="FloralWhite" 
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
-                       Margin="0,0,0,55">
-            </Label>
+                       Margin="0,0,0,55"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" Margin="20" Name="SignUpPanel" Visibility="Hidden">
+        <StackPanel Grid.Row="1" Margin="20" x:Name="SignUpPanel" Visibility="Hidden">
             <Label Content="Sign Up" 
-                       Name="SignUp"
+                       x:Name="SignUp"
                        Foreground="FloralWhite" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
-                       Margin="0,0,0,55">
-            </Label>
+                       Margin="0,0,0,55"/>
             <Label Content="First Name"
-                   Name="UsernameSignUp"
+                   x:Name="UsernameSignUp"
                        Foreground="FloralWhite" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
-            <TextBox Name="txtFirstName" 
+            <TextBox x:Name="txtFirstName" 
                      Background="BlanchedAlmond" 
                      Foreground="#330000"
                      Width="250"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"/>
             <Label Content="Last Name"
-                   Name="PasswordSignUp"
+                   x:Name="PasswordSignUp"
                        Foreground="FloralWhite" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
-            <TextBox Name="txtLastNameSignUp" 
+            <TextBox x:Name="txtLastNameSignUp" 
                      Background="BlanchedAlmond" 
                      Foreground="#330000"
                      Width="250"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"/>
             <Label Content="Password"
-                   Name="PasswordLabel"
+                   x:Name="PasswordLabel"
                        Foreground="FloralWhite" 
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"/>
-            <PasswordBox Name="txtPasswordSignUp" 
+            <PasswordBox x:Name="txtPasswordSignUp" 
                      Background="BlanchedAlmond" 
                      Foreground="#330000"
                      Width="250"
                      PasswordChar="*"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Center"/>
-            <Button Name="btnSubmitSignUp" 
+            <Button x:Name="btnSubmitSignUp" 
                     Background="#ff9933"
                     Content="Submit" 
                     Foreground="FloralWhite"
@@ -645,24 +611,20 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Margin="10,20,20,20" Grid.Column="1">
-            <Label Name="PeopleToday" Content="People today : " Foreground="FloralWhite"
+            <Label x:Name="PeopleToday" Content="People today : " Foreground="FloralWhite"
                        Grid.Column="11"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
                        FontSize="25"
-                       Margin="0,0,0,10">
-
-            </Label>
-            <Label Name="OrdersToday" Content="Orders today : " Foreground="FloralWhite"
+                       Margin="0,0,0,10"/>
+            <Label x:Name="OrdersToday" Content="Orders today : " Foreground="FloralWhite"
                        Grid.Column="11"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        FontFamily="Fonts/#ShipporiMinchoB1-Medium"
-                       FontSize="25">
-
-            </Label>
-            <Image Source="Images/logo.png" Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,50,0,0"></Image>
+                       FontSize="25"/>
+            <Image Source="Images/logo.png" Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,50,0,0"/>
         </StackPanel>
 
     </Grid>

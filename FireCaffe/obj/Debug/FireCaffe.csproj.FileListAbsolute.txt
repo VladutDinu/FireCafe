@@ -79,3 +79,10 @@ E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Castle.Core.dll
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Moq.dll
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Castle.Core.xml
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\Moq.xml
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\FireCaffe.exe.manifest
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\FireCaffe.application
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\obj\Debug\FireCaffe.exe.manifest
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\obj\Debug\FireCaffe.application
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\obj\Debug\FireCaffe.TrustInfo.xml
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\FireCaffe.exe.CodeAnalysisLog.xml
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffe\bin\Debug\FireCaffe.exe.lastcodeanalysissucceeded
