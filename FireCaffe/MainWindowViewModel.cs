@@ -15,6 +15,7 @@ namespace FireCaffe
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
+
         private ObservableCollection<Client> clients;
         private DelegateCommand<Client> saveCommand;
         private Client client;

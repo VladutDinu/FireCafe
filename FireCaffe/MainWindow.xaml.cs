@@ -27,11 +27,14 @@ using System.Data.SQLite;
 using Microsoft.Maps.MapControl.WPF;
 using log4net;
 using log4net.Config;
+using FireCaffeDAL.Design;
 namespace FireCaffe
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+
     public partial class MainWindow : Window
     {
         MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
@@ -131,7 +134,10 @@ namespace FireCaffe
                 {
                     txtPasswordLogin.Clear();
                     txtUsernameLogin.Clear();
-                    MessageBox.Show("Wrong credentials.");
+                    //Singletone
+                    Singleton s = Singleton.Instance;
+                    s.Print("Wrong credentials.");
+                    //Singletone
                     logger.Warn("Wrong credentials.");
                 }
                 else if(c.Admin !=1)
@@ -259,7 +265,14 @@ namespace FireCaffe
         private void btnBuyProduct_Click(object sender, RoutedEventArgs e)
         {
             UserServices us = new UserServices();
-            us.buyProduct(loggedClient, (Product)lvProducts.SelectedItem);
+            try
+            {
+                us.buyProduct(loggedClient, (Product)lvProducts.SelectedItem);
+            }
+            catch(Exception ex)
+            {
+                logger.Error("No item selected from listView" + loggedClient.Username);
+            }
             SilverCupsCount.Text = loggedClient.SilverCups.ToString();
             GoldenCupsCount.Text = loggedClient.GoldenCups.ToString();
         }

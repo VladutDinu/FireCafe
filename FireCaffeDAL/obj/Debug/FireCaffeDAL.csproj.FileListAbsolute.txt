@@ -38,3 +38,4 @@ E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\Castle.Core.xml
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\Moq.xml
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\bin\Debug\System.Threading.Tasks.Extensions.xml
+E:\an3facsem2\pdpf2\FireCaffe\FireCaffeDAL\obj\Debug\FireCaffeDAL.csprojAssemblyReference.cache

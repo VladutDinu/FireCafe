@@ -90,6 +90,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Design\Singleton.cs" />
     <Compile Include="MasterContext.cs" />
     <Compile Include="Migrations\202103061119330_DB_INITIAL.cs" />
     <Compile Include="Migrations\202103061119330_DB_INITIAL.designer.cs">
@@ -100,6 +101,7 @@
       <DependentUpon>202103061614466_Added_Type_Products.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Design\Facade.cs" />
     <Compile Include="Models\IProduct.cs" />
     <Compile Include="Models\IClient.cs" />
     <Compile Include="Models\Client.cs" />

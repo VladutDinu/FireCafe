@@ -26,6 +26,8 @@ namespace WpfApp1.Services
         public bool addNewClient(String FirstName, String LastName, String Password)
         {
             ClientServices clientServices = new ClientServices();
+            //facade design
+            Facade facade = new Facade();
             Client client = new Client();
             client.FirstName = FirstName;
             client.LastName = LastName;
@@ -37,7 +39,8 @@ namespace WpfApp1.Services
                 client.Admin = 0;
                 client.GoldenCups = 0;
                 client.SilverCups = 0;
-                clientServices.AddClient(client);
+                //facade design
+                facade.addClient(client);
                 return true;
             }
             return false;
